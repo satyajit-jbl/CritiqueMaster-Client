@@ -1,9 +1,11 @@
 import React from 'react';
+import AutoSlidingImageSlider from '../../component/AutoSlidingImageSlider';
+
 
 const Home = () => {
     return (
         <div>
-            <h2>This is Home</h2>
+            <AutoSlidingImageSlider></AutoSlidingImageSlider>
         </div>
     );
 };

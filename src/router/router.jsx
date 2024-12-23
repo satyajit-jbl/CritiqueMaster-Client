@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login";
 import ErrorPage from "../pages/Errorpage";
 import AddServices from "../pages/Services/AddService";
 import AddService from "../pages/Services/AddService";
+import MyServices from "../pages/Services/MyServices";
 
 
   const router = createBrowserRouter([
@@ -36,6 +37,10 @@ import AddService from "../pages/Services/AddService";
         {
             path: 'add-service',
             element: <AddService></AddService>
+        },
+        {
+            path: 'my-services',
+            element: <MyServices></MyServices>
         },
         
       ]

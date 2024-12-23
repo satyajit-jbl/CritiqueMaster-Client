@@ -1,9 +1,12 @@
 import React, { useContext, useState } from "react";
 import { authContext } from "../../component/AuthProvider/AuthProvider";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AddService = () => {
     const {user} = useContext(authContext)
+    const navigate = useNavigate()
     console.log({user});
     const email = user?.email;
     console.log(email);
@@ -33,6 +36,8 @@ const AddService = () => {
     // Add API call, send data to server
     const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/add-service`, formData)
     console.log(data);
+    toast.success('Service added successfully!')
+    navigate('/my-services')
   };
 
   return (

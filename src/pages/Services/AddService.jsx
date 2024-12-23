@@ -33,12 +33,20 @@ const AddService = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({ ...formData, addedDate });
-    // Add API call, send data to server
+    try{
+        // Add API call, send data to server
     const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/add-service`, formData)
     console.log(data);
+    //need to check , form reset not working
+    // formData.reset()
     toast.success('Service added successfully!')
     navigate('/my-services')
-  };
+    }catch(err){
+        console.log(err);
+        toast.error(err.message)
+    }
+  }
+  ;
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">

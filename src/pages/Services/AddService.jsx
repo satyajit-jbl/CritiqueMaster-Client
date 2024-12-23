@@ -1,9 +1,14 @@
 import React, { useContext, useState } from "react";
 import { authContext } from "../../component/AuthProvider/AuthProvider";
+import axios from "axios";
 
 const AddService = () => {
     const {user} = useContext(authContext)
-    const {email} = user;
+    console.log({user});
+    const email = user?.email;
+    console.log(email);
+    // const {email, displayName} = {user};
+    // console.log(user.email, displayName);
   const [formData, setFormData] = useState({
     serviceImage: "",
     serviceTitle: "",
@@ -12,19 +17,22 @@ const AddService = () => {
     description: "",
     category: "",
     price: "",
+    email: "",
   });
 
   const addedDate = new Date().toLocaleDateString(); // Format: MM/DD/YYYY
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, addedDate, email, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ ...formData, addedDate, email });
-    // Add your API call or submit logic here
+    console.log({ ...formData, addedDate });
+    // Add API call, send data to server
+    const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/add-service`, formData)
+    console.log(data);
   };
 
   return (
@@ -164,13 +172,30 @@ const AddService = () => {
           {/* Added Date */}
           <div>
             <label className="block text-gray-700 font-medium">Added Date</label>
-            <p className="mt-1 text-gray-500">{addedDate}</p>
+            <p 
+            
+            className="mt-1 text-gray-500">{addedDate}</p>
           </div>
 
           {/* User Email */}
           <div>
             <label className="block text-gray-700 font-medium">User Email</label>
-            <p className="mt-1 text-gray-500">{email}</p>
+            <p 
+            id="email"
+            name="email"
+            value={formData.email}
+            className="mt-1 text-gray-500">{user?.email}</p>
+            {/* <input
+              type="email"
+              id="email"
+              name="email"
+              defaultValue={user?.email}
+              value={formData.email}
+              onChange={handleChange}
+              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+              placeholder="Enter image URL"
+              required
+            /> */}
           </div>
         </div>
 

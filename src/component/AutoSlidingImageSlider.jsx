@@ -3,19 +3,19 @@ import React, { useState, useEffect } from "react";
 const AutoSlidingImageSlider = () => {
   const slides = [
     {
-      image: "https://i.ibb.co.com/YtyvzPr/user-give-rating-to-service-experience-on-online-application-customer-review-satisfaction-feedback-s.jpg",
-      title: "Discover New Horizons",
-      description: "Explore the beauty of nature and expand your perspective.",
+      image: "https://i.ibb.co.com/HnGQSg6/360-F-119910257-OCr-Wh-ZF10uk4-CGFh-Gtl-GP60kf5-BOifyx-1.jpg",
+      title: "Home Services at you: Why it Matter?",
+      description: "However, the ongoing demand for online services caters to the happiness of every individual.",
     },
     {
-      image: "https://i.ibb.co.com/QH86dnt/customer-satisfaction-feedback-rating-on-customer-service-illustration-website-rating-feedback-and-r.jpg",
-      title: "Capture Every Moment",
-      description: "Life is a collection of moments worth cherishing.",
+      image: "https://i.ibb.co.com/T4PBd7v/fb7-V72-PX8-UND2u-KYI2-Zgo5-ZCu-BLXlo9scn4kpznp.jpg",
+      title: "How it works",
+      description: "You’re in the right place!",
     },
     {
       image: "https://i.ibb.co.com/qB5HtPK/360-F-897323719-K48nq-SLx9hm-ZNDc-DQ2-D9-Q2xvzh-ISd-Y3-Q.jpg",
-      title: "Experience Adventure",
-      description: "Step out of your comfort zone and embrace the thrill.",
+      title: "Customer Reviews",
+      description: "Feedback provided by customers after availing a service. These reviews often include ratings, written comments",
     },
   ];
 

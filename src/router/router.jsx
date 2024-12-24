@@ -10,6 +10,7 @@ import ErrorPage from "../pages/Errorpage";
 import AddServices from "../pages/Services/AddService";
 import AddService from "../pages/Services/AddService";
 import MyServices from "../pages/Services/MyServices";
+import UpdateService from "../pages/Services/UpdateService";
 
 
   const router = createBrowserRouter([
@@ -41,6 +42,10 @@ import MyServices from "../pages/Services/MyServices";
         {
             path: 'my-services',
             element: <MyServices></MyServices>
+        },
+        {
+            path: 'update/:id',
+            element: <UpdateService></UpdateService>
         },
         
       ]

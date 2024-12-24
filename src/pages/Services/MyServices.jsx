@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../component/AuthProvider/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const MyServices = () => {
     const {user} = useContext(authContext)
@@ -44,7 +45,7 @@ const MyServices = () => {
                             <th>Name</th>
                             <th>Job</th>
                             <th>Description</th>
-                            <th></th>
+                            <th>Update Services</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,20 +69,20 @@ const MyServices = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <div className="font-bold">Hart Hagerty</div>
-                                        <div className="text-sm opacity-50">United States</div>
+                                        <div className="font-bold">{service.serviceTitle}</div>
+                                        <div className="text-sm opacity-50">{service.companyName}</div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                Zemlak, Daniel and Leannon
+                                {service.category}
                                 <br />
-                                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                <span className="badge badge-ghost badge-sm">{service.price}</span>
                             </td>
-                            <td>Purple</td>
+                            <td>{service.description}</td>
                             <th>
                                 <button onClick={()=>handleDelete(service._id)} className="btn btn-ghost btn-xs">X</button>
-                                <button className="btn btn-ghost btn-xs">Update</button>
+                                <Link to={`/update/${service._id}`}><button className="btn btn-ghost btn-xs">Update</button></Link>
                             </th>
                         </tr>
 

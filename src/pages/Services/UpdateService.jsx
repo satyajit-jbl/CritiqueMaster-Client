@@ -30,6 +30,7 @@ const UpdateService = () => {
 
     console.log({user});
     const email = user?.email;
+    const ReviewCount = service.ReviewCount;
     console.log(email);
     // const {email, displayName} = {user};
     // console.log(user.email, displayName);
@@ -40,7 +41,7 @@ const UpdateService = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, addedDate, email, [name]: value });
+    setFormData({ ...formData, addedDate, ReviewCount, email, [name]: value });
   };
 
   const handleSubmit = async (e) => {

@@ -53,7 +53,7 @@ const MyServices = () => {
                         
                        {
                         services.map(service=>
-                            <tr>
+                            <tr key={service._id}>
                             <th>
                                 <label>
                                     <input type="checkbox" className="checkbox" />

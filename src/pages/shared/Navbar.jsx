@@ -39,7 +39,7 @@ const Navbar = () => {
                 <Link to="/add-service" className="text-gray-600 hover:text-blue-600">
                   Add Service
                 </Link>
-                <Link to="/my-reviews" className="text-gray-600 hover:text-blue-600">
+                <Link to="/reviews" className="text-gray-600 hover:text-blue-600">
                   My Reviews
                 </Link>
                 <Link to="/my-services" className="text-gray-600 hover:text-blue-600">
@@ -47,9 +47,10 @@ const Navbar = () => {
                 </Link>
                 <div className="flex items-center space-x-4">
                   <img
-                    src={user.photoURL || "https://via.placeholder.com/40"}
+                    referrerPolicy='no-referrer'
+                    src={user?.photoURL || "https://via.placeholder.com/40"}
                     alt="User Avatar"
-                    className="w-8 h-8 rounded-full border"
+                    className="w-12 h-12 rounded-full border"
                   />
                   <button
                     onClick={handleLogout}

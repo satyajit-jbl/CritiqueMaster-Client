@@ -24,6 +24,7 @@ const AddService = () => {
     category: "",
     price: "",
     email: "",
+    ReviewCount: 0,
   });
 
   const addedDate = new Date().toLocaleDateString(); // Format: MM/DD/YYYY

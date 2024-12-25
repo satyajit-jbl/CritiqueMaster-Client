@@ -7,6 +7,7 @@ import ServicesSection from '../../component/ServicesSection';
 import FeaturesSection from '../../component/FeaturesSection';
 import AppSection2 from '../../component/AppSection2';
 import Partners from '../Partners/partners';
+import Statistics from '../../component/Statistics';
 
 
 const Home = () => {
@@ -20,11 +21,14 @@ const Home = () => {
                     services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </div>
+            {/* <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+                <Statistics users={data.users} reviews={data.reviews} services={data.services} />
+            </div> */}
             <Partners></Partners>
             <ServicesSection></ServicesSection>
 
             <AppSection></AppSection>
-          
+
             <br />
             <br />
             <FeaturesSection></FeaturesSection>

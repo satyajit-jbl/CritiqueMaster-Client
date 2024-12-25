@@ -7,7 +7,8 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-toastify";
 import { authContext } from "../../component/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-
+import Lottie from "lottie-react";
+import loginLottieData from "../../assets/lottie/login.json"
 
 
 const Login = () => {
@@ -65,7 +66,7 @@ const Login = () => {
             // const errorMessage = error.message;
             // alert(error.code)
             setError({...error, login:err.code})
-           
+           toast.error(err.message)
         })
     }
     // console.log(error.login);
@@ -86,7 +87,10 @@ const Login = () => {
     // }
     
     return (
-        <div className="min-h-screen flex justify-center items-center">
+        <div className="min-h-screen lg:flex justify-center items-center">
+            <div>
+            <Lottie animationData={loginLottieData}></Lottie>
+            </div>
             <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none p-10">
                 <h2 className="text-2xl font-semibold text-center">Login your account</h2>
                 <form onSubmit={handleSubmit} className="card-body">
@@ -122,7 +126,7 @@ const Login = () => {
                 </form>
                 
                 {/* <button onClick={googleLogingHandler} className="btn btn-neutral rounded-none">Google Login</button> */}
-                <p className="text-center font-semibold mt-5">Don't have An Account ? <Link className="text-red-600" to="/auth/register">Register</Link></p>
+                <p className="text-center font-semibold mt-5">Don't have An Account ? <Link className="text-red-600" to="/register">Register</Link></p>
             </div>
         </div>
     );

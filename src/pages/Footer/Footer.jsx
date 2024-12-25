@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from "../../assets/logo.png"
 
 const Footer = () => {
   return (
@@ -6,7 +7,10 @@ const Footer = () => {
       <div className="container mx-auto px-6 md:px-12">
         {/* Website Logo/Name */}
         <div className="flex flex-col md:flex-row justify-between mb-6">
+          <div className='flex items-center'>
+          <img src={logo} alt="" />
           <div className="text-3xl font-semibold">CritiqueMaster</div>
+          </div>
           <p className="text-sm mt-2 md:mt-0">Your trusted platform for authentic service reviews.</p>
         </div>
 

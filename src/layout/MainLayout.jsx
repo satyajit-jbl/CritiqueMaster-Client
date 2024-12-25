@@ -3,12 +3,14 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../pages/shared/Navbar';
 import Footer from '../pages/Footer/Footer';
 import FadeInComponent from '../component/FadeInComponent/FadeInComponent';
+import DynamicTitle from '../component/DynamicTitle';
 
 
 
 const MainLayout = () => {
     return (
-        <div className='w-11/12 mx-auto min-h-screen flex flex-col'>
+        <div className=' mx-auto min-h-screen flex flex-col'>
+            <DynamicTitle></DynamicTitle>
             <Navbar></Navbar>
             {/* <div className='flex-grow'></div> */}
             
@@ -16,7 +18,7 @@ const MainLayout = () => {
             <Outlet></Outlet>
             </div>
             
-            <FadeInComponent></FadeInComponent>
+            
 
             <Footer></Footer>
         </div>

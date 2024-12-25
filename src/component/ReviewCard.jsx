@@ -1,7 +1,10 @@
 import React from 'react';
 
 const ReviewCard = ({review}) => {
-    // const {serviceTitle, companyName, review, serviceId, email, UserName, UserPhoto}= review;
+    console.log(review);
+    
+    // const {UserName, UserPhoto, companyName, email, review, serviceId, serviceTitle, _id} = review || {};
+
     return (
         <div className="card bg-base-100 w-96 shadow-xl">
             <div className="card-body">

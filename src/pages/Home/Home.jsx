@@ -5,6 +5,8 @@ import ServiceCard from '../../component/ServiceCard';
 import AppSection from '../../component/AppSection';
 import ServicesSection from '../../component/ServicesSection';
 import FeaturesSection from '../../component/FeaturesSection';
+import AppSection2 from '../../component/AppSection2';
+import Partners from '../Partners/partners';
 
 
 const Home = () => {
@@ -13,11 +15,12 @@ const Home = () => {
         <div>
             <AutoSlidingImageSlider></AutoSlidingImageSlider>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 m-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 m-5 place-items-center'>
                 {
                     services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </div>
+            <Partners></Partners>
             <ServicesSection></ServicesSection>
 
             <AppSection></AppSection>
@@ -25,6 +28,7 @@ const Home = () => {
             <br />
             <br />
             <FeaturesSection></FeaturesSection>
+            {/* <AppSection2></AppSection2> */}
         </div>
 
     );

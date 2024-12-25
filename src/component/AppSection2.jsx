@@ -1,22 +1,49 @@
 import React from "react";
 import { GooglePlayButton } from "react-mobile-app-button";
+import { motion } from "framer-motion"; // Importing framer-motion
 
-const AppSection = () => {
+const AppSection2 = () => {
+  // Variants for animations
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1 } }
+  };
+
+  const slideUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } }
+  };
+
   return (
     <div className="bg-yellow-400 relative flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 py-10 sm:py-16">
       {/* Left Section */}
-      <div className="text-center md:text-left md:w-1/2 space-y-4 lg:ml-20">
+      <motion.div
+        className="text-center md:text-left md:w-1/2 space-y-4 lg:ml-20"
+        variants={fadeIn} // Apply fade-in animation
+        initial="hidden"
+        animate="visible"
+      >
         <img
           src="path/to/logo.png"
           alt="The Service Buzz Logo"
           className="w-20 sm:w-24 mx-auto md:mx-0"
         />
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black">
+        <motion.h2
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black"
+          variants={slideUp} // Apply slide-up animation
+          initial="hidden"
+          animate="visible"
+        >
           GET THE APP
-        </h2>
-        <p className="text-gray-800 text-sm sm:text-base lg:text-lg">
+        </motion.h2>
+        <motion.p
+          className="text-gray-800 text-sm sm:text-base lg:text-lg"
+          variants={slideUp}
+          initial="hidden"
+          animate="visible"
+        >
           Download the App and manage your services on the go
-        </p>
+        </motion.p>
 
         <div className="mt-4">
           <GooglePlayButton
@@ -25,13 +52,17 @@ const AppSection = () => {
             className={"custom-style"}
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Right Section */}
       <div className="relative md:w-1/2 mt-10 md:mt-0">
         {/* Mockup Wrapper */}
-        {/* <div className="relative flex justify-center md:absolute md:relative md:-right-12 lg:-right-16 transform translate-y-4 sm:translate-y-8 md:translate-y-16"> */}
-        <div className="relative lg:absolute flex justify-center  md:-right-12 lg:right-20 transform translate-y-4 sm:translate-y-8 md:translate-y-16 lg:-translate-y-56">
+        <motion.div
+          className="relative flex justify-center md:absolute md:relative md:-right-12 lg:-right-16 transform translate-y-4 sm:translate-y-8 md:translate-y-16"
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="bg-black w-56 sm:w-64 h-[400px] sm:h-[480px] rounded-xl p-4 relative">
             {/* Service Categories */}
             <div className="grid grid-cols-2 gap-2 sm:gap-4">
@@ -55,16 +86,21 @@ const AppSection = () => {
               ))}
             </div>
             {/* Button */}
-            <div className="mt-6 flex justify-center">
-              <button className="bg-gray-300 w-28 text-black font-semibold py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition mt-5">
-               
+            <motion.div
+              className="mt-6 flex justify-center"
+              variants={fadeIn}
+              initial="hidden"
+              animate="visible"
+            >
+              <button className="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition">
+                Explore More
               </button>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
 };
 
-export default AppSection;
+export default AppSection2;

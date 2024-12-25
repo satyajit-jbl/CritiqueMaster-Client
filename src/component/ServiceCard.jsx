@@ -14,7 +14,7 @@ const ServiceCard = ({service}) => {
 
 
     return (
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card bg-base-100 w-96 shadow-xl mt-10">
             <figure>
                 <img 
                     src={serviceImage}

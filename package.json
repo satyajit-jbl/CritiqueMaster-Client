@@ -21,6 +21,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
+    "react-mobile-app-button": "^1.2.18",
     "react-rating": "^2.0.5",
     "react-router-dom": "^7.1.0",
     "react-toastify": "^11.0.2",

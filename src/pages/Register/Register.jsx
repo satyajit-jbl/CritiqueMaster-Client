@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 // import { authContext } from '../AuthProvider/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { authContext } from '../../component/AuthProvider/AuthProvider';
+import Lottie from 'lottie-react';
+import registerLottieData from "../../assets/lottie/register.json"
 
 
 
@@ -70,7 +72,10 @@ const [error, setError] = useState({});
         })
     }
     return (
-        <div className="min-h-screen flex justify-center items-center">
+        <div className="min-h-screen lg:flex justify-center items-center">
+            <div>
+                <Lottie animationData={registerLottieData}></Lottie>
+            </div>
             <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none p-10">
                 <h2 className="text-2xl font-semibold text-center">Register your account</h2>
                 <form onSubmit={handleSubmit} className="card-body">

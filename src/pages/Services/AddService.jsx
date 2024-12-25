@@ -9,6 +9,9 @@ const AddService = () => {
     const navigate = useNavigate()
     console.log({user});
     const email = user?.email;
+    const userName = user?.displayName;
+    const ProfileImage = user?.photoURL
+
     console.log(email);
     // const {email, displayName} = {user};
     // console.log(user.email, displayName);
@@ -27,7 +30,7 @@ const AddService = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, addedDate, email, [name]: value });
+    setFormData({ ...formData, addedDate, email, userName, ProfileImage, [name]: value });
   };
 
   const handleSubmit = async (e) => {

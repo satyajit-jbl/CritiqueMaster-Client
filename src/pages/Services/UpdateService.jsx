@@ -33,16 +33,7 @@ const UpdateService = () => {
     console.log(email);
     // const {email, displayName} = {user};
     // console.log(user.email, displayName);
-//   const [formData, setFormData] = useState({
-//     serviceImage: "",
-//     serviceTitle: "",
-//     companyName: "",
-//     website: "",
-//     description: "",
-//     category: "",
-//     price: "",
-//     email: "",
-//   });
+
   const [formData, setFormData] = useState({});
 
   const addedDate = new Date().toLocaleDateString(); // Format: MM/DD/YYYY

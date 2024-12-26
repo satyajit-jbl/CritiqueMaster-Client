@@ -1,8 +1,45 @@
 # React + Vite
+# CritiqueMaster
+![Logo](public/logo.png)
+## Purpose
+The CritiqueMaster website allows users to review and rate various services. It aims to provide insightful feedback for customers and help service providers improve their offerings.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live URL
+[Visit the Service Review System](#)  
+*(Replace with the actual live URL once deployed)*
 
-Currently, two official plugins are available:
+## Key Features
+- **User Authentication:**
+  - Register, login, and logout functionality for users.
+- **Service Listings:**
+  - View a list of services available for review.
+- **Review System:**
+  - Users can leave reviews and ratings for services.
+- **Responsive Design:**
+  - Fully responsive UI built with Tailwind CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- **Frontend:** React, Tailwind CSS
+- **Backend:** *( Node.js, Express)*
+- **Database:** *( MongoDB, Firebase)*
+
+## npm Packages Used
+1. `react`
+2. `react-router-dom`
+3. `axios`
+4. `tailwindcss`
+5. `@material-tailwind/react`
+5. `axios`
+5. `framer-motion`
+5. `react-toastify`
+6. `autoprefixer`
+
+## How to Run Locally
+1. Clone the repository:
+   ```bash
+    git clone client
+   https://github.com/programming-hero-web-course2/b10a11-client-side-satyajit-jbl
+    git clone server
+   https://github.com/programming-hero-web-course2/b10a11-server-side-satyajit-jbl
+
+

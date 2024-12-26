@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion"; // Importing motion from framer-motion
+import { motion } from "framer-motion"; 
 import logo1 from '../../assets/logo.png'
 
 const partners = [

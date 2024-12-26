@@ -21,9 +21,7 @@ const Home = () => {
                     services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </div>
-            {/* <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-                <Statistics users={data.users} reviews={data.reviews} services={data.services} />
-            </div> */}
+            <Statistics></Statistics>
             <Partners></Partners>
             <ServicesSection></ServicesSection>
 

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { authContext } from "../AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa6";
-
+import axios from "axios";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-toastify";
 import { authContext } from "../../component/AuthProvider/AuthProvider";
@@ -49,8 +49,20 @@ const Login = () => {
         const password = e.target.password.value;
         // console.log({email,password});
         userLogIn(email, password)
-        
+        // try{
+        //     // Add API call, send data to server
+        // const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/add-service`, formData)
+        // console.log(data);
+        // //need to check , form reset not working
+        // // formData.reset()
+        // toast.success('Service added successfully!')
+        // navigate('/my-services')
+        // }catch(err){
+        //     console.log(err);
+        //     toast.error(err.message)
+        // }
         .then(()=>{
+            axios.post(`${import.meta.env.VITE_API_URL}/users`, email)
             // const user = result.user 
             // setUser(user);
             // alert('successfully login ')

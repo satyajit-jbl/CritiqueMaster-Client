@@ -27,6 +27,7 @@
     "react-mobile-app-button": "^1.2.18",
     "react-rating": "^2.0.5",
     "react-router-dom": "^7.1.0",
+    "react-simple-star-rating": "^5.1.7",
     "react-toastify": "^11.0.2",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.15.3"

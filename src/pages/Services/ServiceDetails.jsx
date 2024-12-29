@@ -1,16 +1,20 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Rating from "react-rating";
+import { Rating } from 'react-simple-star-rating';
 import { authContext } from '../../component/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
+import AllReviews from './AllReviews';
+
 
 const ServiceDetails = () => {
   const navigate = useNavigate()
-  const {user}= useContext(authContext);
-  console.log({user});
+  const { user } = useContext(authContext);
+  console.log({ user });
   const { id } = useParams()
   const [service, setService] = useState({});
+  const [reviews, setReviews] = useState([]);
+  const [rating, setRating] = useState(1);
 
 
   useEffect(() => {
@@ -20,6 +24,8 @@ const ServiceDetails = () => {
     const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/service/${id}`)
     setService(data)
   }
+
+
   const { category,
     companyName,
     description,
@@ -30,38 +36,62 @@ const ServiceDetails = () => {
     website,
     _id } = service || {};
 
-    //Handle form submit
-    const handleSubmit= async e=>{
-      e.preventDefault();
-      const form = e.target
-      const review = form.review.value
-      const serviceId = _id
-      const email = user?.email
-      const UserName = user?.displayName
-      const UserPhoto = user?.photoURL
-      
+  useEffect(() => {
+    fetchAllReviews()
+  }, [id])
+  const fetchAllReviews = async () => {
+    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-reviews/${id}`)
+    await setReviews(data)
+  }
 
-      console.log(review, email, UserName, UserPhoto);
-      console.table({review, email, UserName, UserPhoto});
-      const reviewData = {serviceTitle, companyName, review, serviceId, email, UserName, UserPhoto};
-      
-      try{
-        // Add API call, send data to server
-    const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/reviews`, reviewData)
-    
-    //need to check , form reset not working
-    // reviewData.reset()
-    toast.success('Review added successfully!')
-    console.log(data);
-    // navigate('/reviews')
-    }catch(err){
-        console.log(err);
-        toast.error(err.message)
-    }
-    }
+  
 
+  //Handle form submit
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const form = e.target
+    const review = form.review.value
+    const serviceId = _id
+    const email = user?.email
+    const UserName = user?.displayName
+    const UserPhoto = user?.photoURL
+    let rate = rating
+
+    console.log(review, email, UserName, UserPhoto);
+    console.table({ review, email, UserName, UserPhoto });
+    const reviewData = { serviceTitle, companyName, review, serviceId, email, UserName, UserPhoto, rate };
+
+   
+
+
+
+
+    try {
+      // Add API call, send data to server
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/reviews`, reviewData)
+      setReviews({ ...reviews, data })
+      //need to check , form reset not working
+      // reviewData.reset()
+      toast.success('Review added successfully!')
+      console.log(data);
+      // navigate('/reviews')
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message)
+    }
+    navigate('/reviews')
+  }
+
+  const handleRating = (rate) => {
+    setRating(rate)
+
+    // other logic
+  }
+
+  console.log(reviews?.length);
   return (
     <div className="max-w-4xl mx-auto p-6">
+      <h2>{reviews?.length}</h2>
       {/* Service Details */}
       <div className="bg-white shadow rounded-lg p-6">
         <img
@@ -129,13 +159,14 @@ const ServiceDetails = () => {
           ></textarea>
           <div className="flex items-center mb-4">
             <span className="mr-2">Your Rating:</span>
-            {/* <Rating
-              initialRating={newReview.rating}
-              onChange={(rating) => setNewReview({ ...newReview, rating })}
-              emptySymbol="text-gray-400 fa fa-star-o"
-              fullSymbol="text-yellow-500 fa fa-star"
-              className="text-xl"
-            /> */}
+            <Rating
+              style={{display:'inline-block'}}
+              onClick={handleRating}
+              // onPointerEnter={onPointerEnter}
+              // onPointerLeave={onPointerLeave}
+              // onPointerMove={onPointerMove}
+            /* Available Props */
+            />
           </div>
           <div>
             <h2>{user?.photoURL}</h2>
@@ -174,6 +205,7 @@ const ServiceDetails = () => {
           </div>
         ))} */}
       </div>
+      <AllReviews serviceId={_id}></AllReviews>
     </div>
   );
 };

@@ -32,7 +32,7 @@ const MyServices = () => {
 
     return (
         <div>
-            <div className='w-11/12 mx-auto bg-yellow-400 py-5 p-3 flex items-center rounded-lg mt-10 gap-5'>
+            <div className=' mx-auto bg-yellow-400 py-5 p-3 flex items-center mt-10 gap-5'>
                         <h1 className='py-5 text-4xl font-bold text-center'>My Services</h1>
                             <BiSearch></BiSearch>
                             <input

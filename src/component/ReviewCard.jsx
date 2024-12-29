@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaStar } from "react-icons/fa";
 
 const ReviewCard = ({review}) => {
     console.log(review);
@@ -12,6 +13,12 @@ const ReviewCard = ({review}) => {
                 <h2 className="text-xl">Name: {review.UserName}</h2>
                 <h2 className="card-title">Service: {review.serviceTitle}</h2>
                 <h2 className="">Company Name: {review.companyName}</h2>
+               <div className='flex justify-start items-center gap-1'>
+               {
+                    Array(review?.rate).fill(null).map((_,index)=><FaStar key={index} fill="gold" />)
+                }
+               </div>
+                
                 <p>Review: {review.review}</p>
                 <div className="card-actions justify-end">
                     <button className="btn bg-yellow-400">Update</button>

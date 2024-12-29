@@ -2,13 +2,14 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { authContext } from "../AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa6";
-import axios from "axios";
+// import axios from "axios";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-toastify";
 import { authContext } from "../../component/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import loginLottieData from "../../assets/lottie/login.json"
+import axios from "axios";
 
 
 const Login = () => {
@@ -61,8 +62,15 @@ const Login = () => {
         //     console.log(err);
         //     toast.error(err.message)
         // }
-        .then(()=>{
-            axios.post(`${import.meta.env.VITE_API_URL}/users`, email)
+        .then((result)=>{
+            console.log('sign in', result.user.email);
+            const user = {email: email}
+            console.log(user);
+            axios.post('http://localhost:5000/jwt', user)
+            .then(res=>{
+                console.log(res.data);
+            })
+            // axios.post(`${import.meta.env.VITE_API_URL}/users`, user)
             // const user = result.user 
             // setUser(user);
             // alert('successfully login ')

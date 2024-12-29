@@ -43,3 +43,34 @@ The CritiqueMaster website allows users to review and rate various services. It 
    https://github.com/programming-hero-web-course2/b10a11-server-side-satyajit-jbl
 
 
+2. Navigate to the project directory:
+   ```bash
+   cd service-review-system
+  
+3. Install dependencies:
+   ```bash
+   npm install
+
+4. Start the development server:
+   ```bash
+   npm run dev
+
+## How to Run Locally
+
+- Add advanced filtering and sorting for services.
+- Implement a detailed analytics dashboard for service providers.
+- Introduce notifications for users and service providers.
+
+## Contributing
+Feel free to open issues or submit pull requests. Contributions are welcome!
+```bash
+
+---
+
+### Notes:
+- Replace `public/images/logo.png` and `public/images/homepage-screenshot.png` with the actual file paths to your logo and other images in the project directory.
+- Ensure these image files are pushed to the repository for visibility on platforms like GitHub. 
+
+Let me know if you want me to make these updates directly!
+
+

@@ -22,9 +22,10 @@ const ServiceCard = ({service}) => {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{serviceTitle}</h2>
-                <h2 className="card-title">{companyName}</h2>
-                <p>{category}</p>
-                <p>{description}</p>
+                <h2 className="font-serif font-extralight">{companyName}</h2>
+                <p>Type: {category}</p>
+                <p className='font-semibold'>Price: {price}$</p>
+                <p>Details:{description.substring(0,20)}...</p>
                 <div className="card-actions justify-end">
                     <Link to={`/details/${_id}`}><button className="btn bg-yellow-400">See Details</button></Link>
                 </div>

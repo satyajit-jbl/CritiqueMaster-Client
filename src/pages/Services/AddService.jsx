@@ -22,16 +22,16 @@ const AddService = () => {
     website: "",
     description: "",
     category: "",
-    price: "",
+    price: 0,
     email: "",
     ReviewCount: 0,
   });
 
-  const addedDate = new Date().toLocaleDateString(); // Format: MM/DD/YYYY
+  const addedDate = new Date().toLocaleDateString(); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, addedDate, email, userName, ProfileImage, [name]: value });
+    setFormData({ ...formData, addedDate, email, userName, ProfileImage, [name]: name === "price" ? parseInt(value) || 0 : value, });
   };
 
   const handleSubmit = async (e) => {

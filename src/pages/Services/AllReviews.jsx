@@ -13,7 +13,7 @@ const AllReviews = ({serviceId}) => {
         const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/all-reviews/${serviceId}`)
         setReviews(data)
     }
-    console.log(reviews);
+    // console.log(reviews);
 
     return (
         <div>

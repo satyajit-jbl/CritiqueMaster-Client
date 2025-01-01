@@ -16,9 +16,9 @@ const AllReviews = ({serviceId}) => {
     // console.log(reviews);
 
     return (
-        <div>
+        <div className="grid md:grid-cols-2 gap-10">
             {
-                reviews.map(review1=> <ReviewCard review={review1}></ReviewCard>)
+                reviews.map(review1=> <ReviewCard key={review1._id} review={review1}></ReviewCard>)
             }
         </div>
     );

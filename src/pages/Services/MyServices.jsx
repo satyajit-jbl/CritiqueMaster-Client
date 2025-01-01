@@ -16,17 +16,17 @@ const MyServices = () => {
         const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/services/${user?.email}?search=${search}`)
         setServices(data)
     }
-    console.log(services);
+    // console.log(services);
 
     //delete services
     const handleDelete = async id =>{
         try{
             const {data} = await axios.delete(`${import.meta.env.VITE_API_URL}/service/${id}`)
-            console.log(data);
+            // console.log(data);
             toast.success('Data deleted successfully')
             fetchAllServices()
         }catch(err){
-            console.log(err);
+            // console.log(err);
         }
     }
 

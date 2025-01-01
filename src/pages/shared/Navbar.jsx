@@ -11,8 +11,9 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleLogout =()=>{
-    logOut();
+  const handleLogout = ()=>{
+    logOut()
+    // .then(()=>alert('successfully logout'))
   }
 
   return (

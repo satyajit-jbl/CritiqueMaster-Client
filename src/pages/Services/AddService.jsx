@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom";
 const AddService = () => {
     const {user} = useContext(authContext)
     const navigate = useNavigate()
-    console.log({user});
+    // console.log({user});
     const email = user?.email;
     const userName = user?.displayName;
     const ProfileImage = user?.photoURL
 
-    console.log(email);
+    // console.log(email);
     // const {email, displayName} = {user};
     // console.log(user.email, displayName);
   const [formData, setFormData] = useState({
@@ -36,17 +36,17 @@ const AddService = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ ...formData, addedDate });
+    // console.log({ ...formData, addedDate });
     try{
         // Add API call, send data to server
     const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/add-service`, formData)
-    console.log(data);
+    // console.log(data);
     //need to check , form reset not working
     // formData.reset()
     toast.success('Service added successfully!')
     navigate('/my-services')
     }catch(err){
-        console.log(err);
+        // console.log(err);
         toast.error(err.message)
     }
   }

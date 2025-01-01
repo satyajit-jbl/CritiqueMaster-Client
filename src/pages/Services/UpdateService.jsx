@@ -22,16 +22,16 @@ const UpdateService = () => {
         const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/service/${id}`)
         setService(data)
     }
-    console.log(service);
+    // console.log(service);
 
     // fetch activities from services end
 
 
 
-    console.log({user});
+    // console.log({user});
     const email = user?.email;
     const ReviewCount = service.ReviewCount;
-    console.log(email);
+    // console.log(email);
     // const {email, displayName} = {user};
     // console.log(user.email, displayName);
 
@@ -46,17 +46,17 @@ const UpdateService = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ ...formData, addedDate });
+    // console.log({ ...formData, addedDate });
     try{
         // Add API call, send data to server
     const {data}= await axios.put(`${import.meta.env.VITE_API_URL}/update-service/${id}`, formData)
-    console.log(data);
+    // console.log(data);
     //need to check , form reset not working
     // formData.reset()
     toast.success('Service Updated successfully!')
     navigate('/my-services')
     }catch(err){
-        console.log(err);
+        // console.log(err);
         toast.error(err.message)
     }
   }

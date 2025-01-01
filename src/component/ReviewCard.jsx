@@ -2,7 +2,7 @@ import React from 'react';
 import { FaStar } from "react-icons/fa";
 
 const ReviewCard = ({review}) => {
-    console.log(review);
+    // console.log(review);
     
     // const {UserName, UserPhoto, companyName, email, review, serviceId, serviceTitle, _id} = review || {};
 
@@ -20,6 +20,7 @@ const ReviewCard = ({review}) => {
                </div>
                 
                 <p>Review: {review.review}</p>
+                <p>Date: {review.addedDate}</p>
                 <div className="card-actions justify-end">
                     <button className="btn bg-yellow-400">Update</button>
                     <button className="btn bg-yellow-400">Delete</button>

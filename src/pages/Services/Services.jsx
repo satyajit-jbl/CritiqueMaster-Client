@@ -11,10 +11,11 @@ const Services = () => {
         fetchAllServices()
     }, [search])
     const fetchAllServices = async () => {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/services?search=${search}`)
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/services?search=${search}`
+        )
         setServices(data)
     }
-    console.log(services);
+    // console.log(services);
     return (
         <div>
             {/* <h1 className='py-5 text-4xl font-bold text-center'>All Services</h1> */}

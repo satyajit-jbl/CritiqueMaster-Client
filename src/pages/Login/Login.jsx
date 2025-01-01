@@ -25,21 +25,40 @@ const Login = () => {
     const notify = (txt) => toast(txt);
     const location = useLocation();
     const navigate = useNavigate();
-    console.log(location);
+    // console.log(location);
 
-    const googleLogingHandler = () =>{
-        // console.log(auth);
-        handleGoogleLogin()
-        .then(res=>{
-            // console.log(res);
-        //   navigate(location.state.from)
-        Swal.fire({
-            title: "Login Successfully !!",
+    // const googleLogingHandler = async () =>{
+    //     // generate token
+    //     const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`)
+    //     // console.log(auth);
+    //     handleGoogleLogin()
+    //     .then(res=>{
+    //         // console.log(res);
+    //     //   navigate(location.state.from)
+    //     Swal.fire({
+    //         title: "Login Successfully !!",
             
-            icon: "success"
-          });
-          navigate(location?.state ? location.state : "/")
-        })
+    //         icon: "success"
+    //       });
+    //       navigate(location?.state ? location.state : "/")
+    //     })
+    //   }
+
+      const googleLogingHandler = async () =>{
+        try{
+            await handleGoogleLogin()
+
+            //generate token
+            // const{data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{email: result?.user?.email})
+            
+
+            toast.success('Sign in Successfully')
+            navigate(location?.state ? location.state : '/')
+
+
+        } catch(err){
+            toast.error(err?.message)
+        }
       }
 
       
@@ -63,13 +82,13 @@ const Login = () => {
         //     toast.error(err.message)
         // }
         .then((result)=>{
-            console.log('sign in', result.user.email);
-            const user = {email: email}
-            console.log(user);
-            axios.post('http://localhost:5000/jwt', user)
-            .then(res=>{
-                console.log(res.data);
-            })
+            // console.log('sign in', result.user.email);
+            // const user = {email: email}
+            // console.log(user);
+            // axios.post('http://localhost:5000/jwt', user)
+            // .then(res=>{
+            //     // console.log(res.data);
+            // })
             // axios.post(`${import.meta.env.VITE_API_URL}/users`, user)
             // const user = result.user 
             // setUser(user);

@@ -53,7 +53,7 @@ import Reviews from "../pages/Services/Reviews";
         },
         {
             path: 'details/:id',
-            element: <ServiceDetails></ServiceDetails>
+            element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
         },
         {
             path: 'reviews',

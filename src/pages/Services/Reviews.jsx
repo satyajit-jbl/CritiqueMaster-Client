@@ -9,11 +9,14 @@ const Reviews = () => {
     useEffect(()=>{
         fetchAllReviews()
     },[user])
-    const fetchAllReviews = async()=>{
-        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/reviews-list/${user?.email}`)
+    const fetchAllReviews = async ()=>{
+        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/reviews-list/${user?.email}`,
+        // const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/reviews-list/sat@gmail.com`,
+            {withCredentials: true}
+        )
         setReviews(data)
     }
-    console.log(reviews);
+    // console.log(reviews);
     return (
         <div className='place-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 mb-10'>
             {

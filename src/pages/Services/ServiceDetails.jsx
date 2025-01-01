@@ -10,7 +10,7 @@ import AllReviews from './AllReviews';
 const ServiceDetails = () => {
   const navigate = useNavigate()
   const { user } = useContext(authContext);
-  console.log({ user });
+  // console.log({ user });
   const { id } = useParams()
   const [service, setService] = useState({});
   const [reviews, setReviews] = useState([]);
@@ -44,7 +44,7 @@ const ServiceDetails = () => {
     await setReviews(data)
   }
 
-  
+
 
   //Handle form submit
   const handleSubmit = async e => {
@@ -56,12 +56,14 @@ const ServiceDetails = () => {
     const UserName = user?.displayName
     const UserPhoto = user?.photoURL
     let rate = rating
+    const addedDate = new Date().toLocaleDateString(); 
 
-    console.log(review, email, UserName, UserPhoto);
+
+    // console.log(review, email, UserName, UserPhoto);
     console.table({ review, email, UserName, UserPhoto });
-    const reviewData = { serviceTitle, companyName, review, serviceId, email, UserName, UserPhoto, rate };
+    const reviewData = { serviceTitle, companyName, review, serviceId, email, UserName, UserPhoto, rate, addedDate };
 
-   
+
 
 
 
@@ -73,10 +75,10 @@ const ServiceDetails = () => {
       //need to check , form reset not working
       // reviewData.reset()
       toast.success('Review added successfully!')
-      console.log(data);
+      // console.log(data);
       // navigate('/reviews')
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err.message)
     }
     navigate('/reviews')
@@ -88,16 +90,16 @@ const ServiceDetails = () => {
     // other logic
   }
 
-  console.log(reviews?.length);
+  // console.log(reviews?.length);
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h2>{reviews?.length}</h2>
+      {/* <h2>{reviews?.length}</h2> */}
       {/* Service Details */}
       <div className="bg-white shadow rounded-lg p-6">
         <img
           src={serviceImage}
           alt={serviceTitle}
-          className="w-full h-64 object-cover rounded-lg mb-4"
+          className=" h-64 object-cover rounded-lg mb-4"
         />
         <h1 className="text-2xl font-semibold mb-4">{serviceTitle}</h1>
         <p className="text-gray-600 mb-6">{description}</p>
@@ -157,26 +159,52 @@ const ServiceDetails = () => {
             // }
             required
           ></textarea>
-          <div className="flex items-center mb-4">
+          <div className="block items-center mb-4">
             <span className="mr-2">Your Rating:</span>
             <Rating
-              style={{display:'inline-block'}}
+              // style={{display:'inline-block'}}
               onClick={handleRating}
-              // onPointerEnter={onPointerEnter}
-              // onPointerLeave={onPointerLeave}
-              // onPointerMove={onPointerMove}
+            // onPointerEnter={onPointerEnter}
+            // onPointerLeave={onPointerLeave}
+            // onPointerMove={onPointerMove}
             /* Available Props */
             />
           </div>
+
+          {/* updated review horizontally start */}
+          <div className="flex items-center mb-4">
+            <span className="mr-2">Your Rating:</span>
+            <div className="flex flex-row space-x-2">
+              {Array.from({ length: 5 }).map((_, index) => {
+                const starValue = index + 1; // Star value starts from 1
+                return (
+                  <span
+                    key={index}
+                    className={`cursor-pointer text-2xl ${starValue <= rating ? 'text-yellow-500' : 'text-gray-400'
+                      }`}
+                    onClick={() => handleRating(starValue)} // Set the rating when clicked
+                  >
+                    ★
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+          {/* updated review horizontally end */}
+
+
+
+
+
           <div>
-            <h2>{user?.photoURL}</h2>
+            {/* <h2>{user?.photoURL}</h2> */}
             <img referrerPolicy='no-referrer' className='h-24 w-24 rounded-full' src={user?.photoURL} alt="" />
-            <h2>{user?.displayName}</h2>
-            <h2>{user?.email}</h2>
+            <h2>Name: {user?.displayName}</h2>
+            <h2>Email: {user?.email}</h2>
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition mt-3"
           >
             Submit Review
           </button>

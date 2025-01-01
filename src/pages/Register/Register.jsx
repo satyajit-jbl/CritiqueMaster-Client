@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { authContext } from '../../component/AuthProvider/AuthProvider';
 import Lottie from 'lottie-react';
 import registerLottieData from "../../assets/lottie/register.json"
+import Swal from 'sweetalert2';
 
 
 
@@ -56,9 +57,14 @@ const [error, setError] = useState({});
         .then(result=>{
             const user = result.user;
             setSuccess(true);
+            Swal.fire({
+                title: "Register Successfully !!",
+                icon: "success"
+              });
             // setUser(user);
             updateUserProfile({displayName: name, photoURL: photo })
             .then(()=>{
+                
                 navigate("/")
             }).catch(err=>{
                 // console.log(err);

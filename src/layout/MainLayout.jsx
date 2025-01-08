@@ -14,7 +14,8 @@ const MainLayout = () => {
             <Navbar></Navbar>
             {/* <div className='flex-grow'></div> */}
             
-            <div className='min-h-[calc(100vh-306px)]'>
+            {/* <div className='min-h-[calc(100vh-306px)]'> */}
+            <div className='min-h-screen'>
             <Outlet></Outlet>
             </div>
             

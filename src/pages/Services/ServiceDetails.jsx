@@ -5,20 +5,29 @@ import { Rating } from 'react-simple-star-rating';
 import { authContext } from '../../component/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import AllReviews from './AllReviews';
+import useReviews from '../../Hooks/useReviews';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
 
 
 const ServiceDetails = () => {
   const navigate = useNavigate()
   const { user } = useContext(authContext);
+  const clientQuery = useQueryClient();
+
+  const {addReview} =useReviews()
+
+
+
   // console.log({ user });
   const { id } = useParams()
   const [service, setService] = useState({});
-  const [reviews, setReviews] = useState([]);
+  // const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState(1);
 
 
   useEffect(() => {
-    fetchServiceData()
+    fetchServiceData();
   }, [id])
   const fetchServiceData = async () => {
     const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/service/${id}`)
@@ -36,18 +45,33 @@ const ServiceDetails = () => {
     website,
     _id } = service || {};
 
-  useEffect(() => {
-    fetchAllReviews()
-  }, [id])
-  const fetchAllReviews = async () => {
-    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-reviews/${id}`)
-    await setReviews(data)
-  }
-
-
+  // useEffect(() => {
+  //   fetchAllReviews()
+  // }, [id])
+  // const fetchAllReviews = async () => {
+  //   const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-reviews/${id}`)
+  //        setReviews(data)
+  // }
+ 
+  const addReviewMutaion = useMutation({
+    mutationKey: ['reviews'],
+    mutationFn: (reviewData)=>addReview(reviewData),
+    onSuccess: ()=>{
+      clientQuery.invalidateQueries('reviews'),
+      Swal.fire({
+        title: "Thanks!",
+        text: "Reviews added successfully!",
+        icon: "success"
+      });
+      // alert('Reviews added successfully')
+    },
+    onError: ()=>{
+      alert('Erron in adding revieews')
+    }
+  });
 
   //Handle form submit
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
     const form = e.target
     const review = form.review.value
@@ -62,26 +86,28 @@ const ServiceDetails = () => {
     // console.log(review, email, UserName, UserPhoto);
     console.table({ review, email, UserName, UserPhoto });
     const reviewData = { serviceTitle, companyName, review, serviceId, email, UserName, UserPhoto, rate, addedDate };
+   
+    addReviewMutaion.mutate(reviewData)
+
+    //  addReview(reviewData)
 
 
 
 
-
-
-    try {
-      // Add API call, send data to server
-      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/reviews`, reviewData)
-      setReviews({ ...reviews, data })
-      //need to check , form reset not working
-      // reviewData.reset()
-      toast.success('Review added successfully!')
-      // console.log(data);
-      // navigate('/reviews')
-    } catch (err) {
-      // console.log(err);
-      toast.error(err.message)
-    }
-    navigate('/reviews')
+    // try {
+    //   // Add API call, send data to server
+    //   const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/reviews`, reviewData)
+    //   setReviews({ ...reviews, data })
+    //   //need to check , form reset not working
+    //   // reviewData.reset()
+    //   toast.success('Review added successfully!')
+    //   // console.log(data);
+    //   // navigate('/reviews')
+    // } catch (err) {
+    //   // console.log(err);
+    //   toast.error(err.message)
+    // }
+    // navigate('/reviews')
   }
 
   const handleRating = (rate) => {
@@ -89,6 +115,10 @@ const ServiceDetails = () => {
 
     // other logic
   }
+
+
+// console.log(service);
+  
 
   // console.log(reviews?.length);
   return (
@@ -159,17 +189,7 @@ const ServiceDetails = () => {
             // }
             required
           ></textarea>
-          <div className="block items-center mb-4">
-            <span className="mr-2">Your Rating:</span>
-            <Rating
-              // style={{display:'inline-block'}}
-              onClick={handleRating}
-            // onPointerEnter={onPointerEnter}
-            // onPointerLeave={onPointerLeave}
-            // onPointerMove={onPointerMove}
-            /* Available Props */
-            />
-          </div>
+          
 
           {/* updated review horizontally start */}
           <div className="flex items-center mb-4">
@@ -233,7 +253,7 @@ const ServiceDetails = () => {
           </div>
         ))} */}
       </div>
-      <AllReviews serviceId={_id}></AllReviews>
+      <AllReviews serviceId={id}></AllReviews>
     </div>
   );
 };

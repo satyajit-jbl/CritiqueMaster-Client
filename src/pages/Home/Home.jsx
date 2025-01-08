@@ -8,6 +8,7 @@ import FeaturesSection from '../../component/FeaturesSection';
 import AppSection2 from '../../component/AppSection2';
 import Partners from '../Partners/partners';
 import Statistics from '../../component/Statistics';
+import Partners2 from '../Partners/Partners2';
 
 
 const Home = () => {
@@ -22,8 +23,10 @@ const Home = () => {
                 }
             </div>
             <Statistics></Statistics>
-            <Partners></Partners>
+            {/* <Partners></Partners> */}
+            <Partners2></Partners2>
             <ServicesSection></ServicesSection>
+            
 
             <AppSection></AppSection>
 

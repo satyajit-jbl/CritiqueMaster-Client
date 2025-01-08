@@ -1,25 +1,30 @@
+import { FaThumbsUp } from "react-icons/fa";
+import { FaWatchmanMonitoring } from "react-icons/fa6";
+import { TbMoodHappy } from "react-icons/tb";
+import { FaAmazonPay } from "react-icons/fa";
+
 const FeaturesSection = () => {
     const features = [
       {
-        icon: "👍", // Use an actual icon component or image if needed
+        icon: <FaThumbsUp className="text-yellow-300"></FaThumbsUp>, // Use an actual icon component or image if needed
         title: "Service Guarantee",
         description:
           "The Guarantee of technicians quickly and efficiently deliver all services.",
       },
       {
-        icon: "⏰",
+        icon: <FaWatchmanMonitoring className="text-red-600"></FaWatchmanMonitoring>,
         title: "24 x 7 Support",
         description:
           "24x7 tech support is one of the best online support services in the leading generation.",
       },
       {
-        icon: "🎖️",
+        icon: <TbMoodHappy className="text-yellow-300"/>,
         title: "Satisfaction Guaranteed",
         description:
           "A small but growing number of companies offer customers an unconditional guarantee of satisfaction.",
       },
       {
-        icon: "💳",
+        icon: <FaAmazonPay className="text-red-600"/>,
         title: "Easy Payment",
         description:
           "Available cash on delivery is a type of transaction in which payment for a good is made at the time of delivery.",

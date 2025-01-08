@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
                     },
                     { withCredentials: true }
                 )
-                console.log(data);
+                // console.log(data);
 
             } else {
                 setUser(currentUser);

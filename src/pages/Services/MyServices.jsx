@@ -48,17 +48,16 @@ const MyServices = () => {
                             </div> */}
                         </div>
             <div className="overflow-x-auto">
-                {services.length}
+                
               
                 <table className="table">
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
-                            </th>
+                            
+                            <th></th>
+                            <th></th>
+                            <th>Sl</th>
                             <th>Name</th>
                             <th>Job</th>
                             <th>Description</th>
@@ -69,12 +68,12 @@ const MyServices = () => {
                         {/* row 1 */}
                         
                        {
-                        services.map(service=>
+                        services.map((service, index)=>
                             <tr key={service._id}>
+                                <td></td>
+                                <td></td>
                             <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
+                                {index+1}
                             </th>
                             <td>
                                 <div className="flex items-center gap-3">
@@ -106,16 +105,7 @@ const MyServices = () => {
                         )
                        }
                     </tbody>
-                    {/* foot */}
-                    <tfoot>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
+                    
                 </table>
             </div>
         </div>

@@ -51,7 +51,7 @@ function ServicesSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            How it Works
+            How Critique Master Works
           </motion.h2>
           <p className="text-gray-700 text-lg mt-2">You're in the right place!</p>
 

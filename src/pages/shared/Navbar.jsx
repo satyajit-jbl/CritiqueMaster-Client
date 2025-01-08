@@ -139,7 +139,8 @@ const Navbar = () => {
                       className="w-8 h-8 rounded-full border"
                     />
                     <button
-                      onClick={onLogout}
+                      // onClick={onLogout}
+                      onClick={handleLogout}
                       className="text-gray-600 hover:text-blue-600">
                       Logout
                     </button>

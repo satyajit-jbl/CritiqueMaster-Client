@@ -85,7 +85,7 @@ const Login = () => {
             // console.log('sign in', result.user.email);
             // const user = {email: email}
             // console.log(user);
-            // axios.post('http://localhost:5000/jwt', user)
+            // axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user)
             // .then(res=>{
             //     // console.log(res.data);
             // })

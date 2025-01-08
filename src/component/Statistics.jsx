@@ -9,7 +9,7 @@ const Statistics = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/counts')
+    axios.get(`${import.meta.env.VITE_API_URL}/api/counts`)
       .then((response) => {
         setData(response.data);
         setLoading(false);
@@ -21,7 +21,7 @@ const Statistics = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div><span className="loading loading-bars loading-lg"></span></div>;
   }
 
   return (

@@ -25,7 +25,7 @@ import Reviews from "../pages/Services/Reviews";
         {
             path: '/',
             element: <Home></Home>,
-            loader: ()=>fetch('http://localhost:5000/services6')
+            loader: ()=>fetch(`${import.meta.env.VITE_API_URL}/services6`)
         },
         {
             path: 'register',

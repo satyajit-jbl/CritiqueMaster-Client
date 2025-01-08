@@ -1,5 +1,7 @@
 import React from "react";
+import { FaHome, FaKickstarter, FaLaptop, FaMobileAlt, FaSnowflake, FaWarehouse } from "react-icons/fa";
 import { GooglePlayButton } from "react-mobile-app-button";
+import logo from "../assets/logo.png"
 
 const AppSection = () => {
   return (
@@ -7,8 +9,8 @@ const AppSection = () => {
       {/* Left Section */}
       <div className="text-center md:text-left md:w-1/2 space-y-4 lg:ml-20">
         <img
-          src="path/to/logo.png"
-          alt="The Service Buzz Logo"
+          src={logo}
+          alt="website Logo"
           className="w-20 sm:w-24 mx-auto md:mx-0"
         />
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black">
@@ -18,13 +20,13 @@ const AppSection = () => {
           Download the App and manage your services on the go
         </p>
 
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <GooglePlayButton
             url="https://play.google.com/store/apps/details?id=host"
             theme={"light"}
             className={"custom-style"}
           />
-        </div>
+        </div> */}
       </div>
 
       {/* Right Section */}
@@ -36,12 +38,13 @@ const AppSection = () => {
             {/* Service Categories */}
             <div className="grid grid-cols-2 gap-2 sm:gap-4">
               {[
-                { icon: "📱", label: "Mobile" },
-                { icon: "💻", label: "Computer" },
-                { icon: "❄️", label: "AC" },
-                { icon: "🧊", label: "Refrigerator" },
-                { icon: "🌀", label: "Washing Machine" },
-                { icon: "🏠", label: "Home Appliances" },
+                
+                { icon: <FaMobileAlt />, label: "Mobile" },
+                { icon: <FaLaptop />, label: "Computer" },
+                { icon: <FaSnowflake />, label: "AC" },
+                { icon: <FaKickstarter />, label: "Refrigerator" },
+                { icon: <FaWarehouse />, label: "Washing Machine" },
+                { icon: <FaHome />, label: "Home Appliances" },
               ].map((service, index) => (
                 <div
                   key={index}

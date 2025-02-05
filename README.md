@@ -5,8 +5,8 @@
 The CritiqueMaster website allows users to review and rate various services. It aims to provide insightful feedback for customers and help service providers improve their offerings.
 
 ## Live URL
-[Visit the Service Review System](#)  
-*(Replace with the actual live URL once deployed)*
+[CriticMaster](#)  
+(https://bistro-boss-d70c3.web.app/)
 
 ## Key Features
 - **User Authentication:**
@@ -38,9 +38,9 @@ The CritiqueMaster website allows users to review and rate various services. It 
 1. Clone the repository:
    ```bash
     git clone client
-   https://github.com/programming-hero-web-course2/b10a11-client-side-satyajit-jbl
+   https://github.com/satyajit-jbl/CritiqueMaster-Client
     git clone server
-   https://github.com/programming-hero-web-course2/b10a11-server-side-satyajit-jbl
+   https://github.com/satyajit-jbl/CritiqueMaster-Server
 
 
 2. Navigate to the project directory:

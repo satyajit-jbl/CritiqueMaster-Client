@@ -6,24 +6,26 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { authContext } from './AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
+import useTest from '../Hooks/useTest';
 
 const ReviewCard = ({reviewData}) => {
     const {user} = useContext(authContext);
     const [updateModal, setUpdateModal]=useState(false)
     const {handleUpdateReview,handleDEleteReview} = useReviews()
     const clientQuery = useQueryClient();
+    const myInfo = useTest();
     const [inputData, setInputData] = useState({
       rate: 1, 
       review: ""
     });
-    
+     console.log(myInfo.name);
     const {UserName, UserPhoto, companyName, email, review, serviceId, serviceTitle, _id, rate} = reviewData;
     // console.log(rate);
     const deleteReviewMutaion = useMutation({
       mutationKey: ['reviews'],
       mutationFn: (id)=>handleDEleteReview(id),
       onSuccess: ()=>{
-        clientQuery.invalidateQueries('reviews'),
+        clientQuery.invalidateQueries(['reviews']),
         toast.success('Reviews deleted successfully!');
         // alert('Reviews deleted successfully')
       },

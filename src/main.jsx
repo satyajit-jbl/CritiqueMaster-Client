@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 
 import {
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')).render(
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
         <ToastContainer></ToastContainer>
+        <ReactQueryDevtools initialIsOpen />
       </QueryClientProvider>
 
 

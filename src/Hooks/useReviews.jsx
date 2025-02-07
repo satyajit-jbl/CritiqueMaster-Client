@@ -13,8 +13,9 @@ const useReviews = () => {
     async function getReviews(id){
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/all-reviews/${id}`);
         // setReviews(response.data);.
-        // console.log(response.data);
+        console.log(response.data);
         return response.data
+
     }
 
     

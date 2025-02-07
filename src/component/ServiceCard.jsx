@@ -1,37 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-const ServiceCard = ({service}) => {
+const ServiceCard = ({ service }) => {
+  const {
+    category,
+    companyName,
+    description,
+    price,
+    serviceImage,
+    serviceTitle,
+    _id,
+  } = service || {};
 
-    const {category,
-        companyName,
-        description,
-        price,
-        serviceImage,
-        serviceTitle,
-        website,
-        _id} = service || {};
-
-
-    return (
-        <div className="card bg-base-100 shadow-xl mt-10">
-            <figure className='h-[60vh] w-full rounded-t-2xl'>
-                <img className='object-cover object-center w-full h-full rounded-t-2xl' 
-                    src={serviceImage}
-                    alt="Shoes" />
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title">{serviceTitle}</h2>
-                <h2 className="font-serif font-extralight">{companyName}</h2>
-                <p>Type: {category}</p>
-                <p className='font-semibold'>Price: {price}$</p>
-                <p>Details:{description.substring(0,20)}...</p>
-                <div className="card-actions justify-end">
-                    <Link to={`/details/${_id}`}><button className="btn bg-yellow-400">See Details</button></Link>
-                </div>
-            </div>
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transform hover:scale-105 transition-all duration-300 mx-auto mt-6 w-full max-w-sm"
+    >
+      <div className="h-56">
+        <img
+          className="object-cover w-full h-full rounded-t-lg"
+          src={serviceImage}
+          alt={serviceTitle}
+        />
+      </div>
+      <div className="p-4 flex flex-col h-56 justify-between">
+        <div>
+          <h2 className="text-lg font-bold text-gray-800 truncate">{serviceTitle}</h2>
+          <h3 className="text-sm font-light text-gray-600">{companyName}</h3>
+          <p className="text-xs text-gray-500 mt-1">Type: {category}</p>
+          <p className="text-lg font-semibold text-green-600 mt-1">Price: ${price}</p>
+          <p className="text-sm text-gray-700 mt-2">
+            Details: {description.length > 40 ? `${description.substring(0, 40)}...` : description}
+          </p>
         </div>
-    );
+        <div className="mt-4 flex justify-end">
+          <Link to={`/details/${_id}`}>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-yellow-400 text-white text-sm font-medium py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition-all duration-300"
+            >
+              See Details
+            </motion.button>
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 export default ServiceCard;

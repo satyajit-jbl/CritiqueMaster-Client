@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+  }
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes glow-border {
+    0% { box-shadow: 0 0 5px rgba(255, 193, 7, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(255, 193, 7, 0.7); }
+    100% { box-shadow: 0 0 5px rgba(255, 193, 7, 0.3); }
+  }
+  .animate-glow-border {
+    animation: glow-border 1.5s infinite alternate ease-in-out;
+  }

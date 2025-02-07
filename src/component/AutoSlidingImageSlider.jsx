@@ -3,17 +3,17 @@ import React, { useState, useEffect } from "react";
 const AutoSlidingImageSlider = () => {
   const slides = [
     {
-      image: "https://i.ibb.co.com/HnGQSg6/360-F-119910257-OCr-Wh-ZF10uk4-CGFh-Gtl-GP60kf5-BOifyx-1.jpg",
+      image: "https://i.ibb.co.com/27NLhxy5/fb7-V72-PX8-UND2u-KYI2-Zgo5-ZCu-BLXlo9scn4kpznp.jpg",
       title: "Home Services at you: Why it Matter?",
       description: "However, the ongoing demand for online services caters to the happiness of every individual.",
     },
     {
-      image: "https://i.ibb.co.com/T4PBd7v/fb7-V72-PX8-UND2u-KYI2-Zgo5-ZCu-BLXlo9scn4kpznp.jpg",
+      image: "https://i.ibb.co.com/pvJBRVt7/360-F-897323719-K48nq-SLx9hm-ZNDc-DQ2-D9-Q2xvzh-ISd-Y3-Q.jpg",
       title: "How it works",
       description: "You’re in the right place!",
     },
     {
-      image: "https://i.ibb.co.com/qB5HtPK/360-F-897323719-K48nq-SLx9hm-ZNDc-DQ2-D9-Q2xvzh-ISd-Y3-Q.jpg",
+      image: "https://i.ibb.co.com/NdWt7xTz/depositphotos-194659646-stock-photo-five-stars-rating-businessman-touching.webp",
       title: "Customer Reviews",
       description: "Feedback provided by customers after availing a service. These reviews often include ratings, written comments",
     },

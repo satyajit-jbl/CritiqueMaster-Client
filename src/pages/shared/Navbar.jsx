@@ -17,35 +17,35 @@ const Navbar = () => {
   }
 
   return (
-    <nav className=" shadow-md sticky top-0 z-50 bg-slate-200">
+    <nav className=" shadow-md sticky top-0 z-50 bg-slate-200 ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className=" flex flex-shrink-0 items-center">
             <img src={logo} alt="" />
-            <Link to="/" className="text-xl font-bold text-blue-600">
+            <Link to="/" className="text-xl font-bold text-yellow-500 hover:text-blue-600">
             CritiqueMaster
             </Link>
           </div>
 
           {/* Links */}
           <div className="hidden md:flex space-x-6 items-center">
-            <Link to="/" className="text-gray-600 hover:text-blue-600">
+            <Link to="/" className="text-yellow-500 font-bold hover:text-blue-600">
               Home
             </Link>
-            <Link to="/services" className="text-gray-600 hover:text-blue-600">
+            <Link to="/services" className=" font-bold hover:text-blue-600" style={{ color: '#FF9800' }}>
               Services
             </Link>
             {/* {isLoggedIn ? ( */}
             {user ? (
               <>
-                <Link to="/add-service" className="text-gray-600 hover:text-blue-600">
+                <Link to="/add-service" className="text-yellow-500 font-bold hover:text-blue-600">
                   Add Service
                 </Link>
-                <Link to="/reviews" className="text-gray-600 hover:text-blue-600">
+                <Link to="/reviews" className="text-yellow-500 font-bold hover:text-blue-600">
                   My Reviews
                 </Link>
-                <Link to="/my-services" className="text-gray-600 hover:text-blue-600">
+                <Link to="/my-services" className="text-yellow-500 font-bold hover:text-blue-600">
                   My Services
                 </Link>
                 <div className="flex items-center space-x-4">
@@ -57,17 +57,17 @@ const Navbar = () => {
                   />
                   <button
                     onClick={handleLogout}
-                    className="text-gray-600 hover:text-blue-600">
+                    className="text-yellow-500 font-bold hover:text-blue-600">
                     Logout
                   </button>
                 </div>
               </>
             ) : (
               <>
-                <Link to="/login" className="text-gray-600 hover:text-blue-600">
+                <Link to="/login" className="text-yellow-500 font-bold hover:text-blue-600">
                   Login
                 </Link>
-                <Link to="/register" className="text-gray-600 hover:text-blue-600">
+                <Link to="/register" className="text-yellow-500 font-bold hover:text-blue-600">
                   Register
                 </Link>
               </>

@@ -3,17 +3,16 @@ import React, { useState } from "react";
 const ImageSlider = () => {
     const slides = [
         {
-          image: "https://i.ibb.co.com/YtyvzPr/user-give-rating-to-service-experience-on-online-application-customer-review-satisfaction-feedback-s.jpg",
+          image: "https://i.ibb.co.com/27NLhxy5/fb7-V72-PX8-UND2u-KYI2-Zgo5-ZCu-BLXlo9scn4kpznp.jpg",
           title: "Discover New Horizons",
           description: "Explore the beauty of nature and expand your perspective.",
         },
         {
-          image: "https://i.ibb.co.com/QH86dnt/customer-satisfaction-feedback-rating-on-customer-service-illustration-website-rating-feedback-and-r.jpg",
+          image: "https://i.ibb.co.com/pvJBRVt7/360-F-897323719-K48nq-SLx9hm-ZNDc-DQ2-D9-Q2xvzh-ISd-Y3-Q.jpg",
           description: "Life is a collection of moments worth cherishing.",
         },
         {
-          image: "https://i.ibb.co.com/qB5HtPK/360-F-897323719-K48nq-SLx9hm-ZNDc-DQ2-D9-Q2xvzh-ISd-Y3-Q.jpg",
-          title: "Experience Adventure",
+          image: "https://i.ibb.co.com/YTTqKWyx/user-give-rating-to-service-experience-on-online-application-customer-review-satisfaction-feedback-s.jpg",
           description: "Step out of your comfort zone and embrace the thrill.",
         },
       ];

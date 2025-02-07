@@ -2,171 +2,189 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import useReviews from '../Hooks/useReviews';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { authContext } from './AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import useTest from '../Hooks/useTest';
 
-const ReviewCard = ({reviewData}) => {
-    const {user} = useContext(authContext);
-    const [updateModal, setUpdateModal]=useState(false)
-    const {handleUpdateReview,handleDEleteReview} = useReviews()
-    const clientQuery = useQueryClient();
-    const myInfo = useTest();
-    const [inputData, setInputData] = useState({
-      rate: 1, 
-      review: ""
-    });
-     console.log(myInfo.name);
-    const {UserName, UserPhoto, companyName, email, review, serviceId, serviceTitle, _id, rate} = reviewData;
-    // console.log(rate);
-    const deleteReviewMutaion = useMutation({
-      mutationKey: ['reviews'],
-      mutationFn: (id)=>handleDEleteReview(id),
-      onSuccess: ()=>{
-        clientQuery.invalidateQueries(['reviews']),
-        toast.success('Reviews deleted successfully!');
-        // alert('Reviews deleted successfully')
-      },
-      onError: ()=>{
-        alert('Erron in delete revieews')
-      }
-    });
-   const newData = {
-    UserName, UserPhoto, companyName, email, serviceId, serviceTitle, _id
-   }
-    const finalData = {...newData, ...inputData}
+const ReviewCard = ({ reviewData }) => {
+  const { user } = useContext(authContext);
+  const [updateModal, setUpdateModal] = useState(false);
+  const { handleUpdateReview, handleDEleteReview } = useReviews();
+  const clientQuery = useQueryClient();
+  const myInfo = useTest();
+  const [inputData, setInputData] = useState({
+    rate: reviewData.rate || 0,
+    review: reviewData.review || ""
+  });
 
-    function handleUpdate(e){
-      e.preventDefault();
-      updateReviewMutation.mutate(finalData);
-        // console.log(finalData);
-        
+  const { UserName, UserPhoto, companyName, email, serviceId, serviceTitle, _id, rate } = reviewData;
+
+  const deleteReviewMutation = useMutation({
+    mutationKey: ['reviews'],
+    mutationFn: (id) => handleDEleteReview(id),
+    onSuccess: () => {
+      clientQuery.invalidateQueries(['reviews']);
+      toast.success('Review deleted successfully!');
+    },
+    onError: () => {
+      toast.error('Error deleting review');
     }
-    
-   
-    const updateReviewMutation = useMutation({
-        mutationKey: ['reviews'],
-        mutationFn: (reviewData)=>handleUpdateReview(reviewData),
-        onSuccess: ()=>{
-          clientQuery.invalidateQueries('reviews'),
-          alert('Reviews Updated successfully')
-        },
-        onError: ()=>{
-          alert('Erron in Updating reviews')
-        }
-      });
-    
+  });
 
-    const getCurrentDate = () => {
-      const date = new Date();
-      const options = { day: '2-digit', month: 'short', year: 'numeric' };
-      return date.toLocaleDateString('en-US', options);
-    };
-    
-    const handleRating = (rate) => {
-      setInputData({...inputData, rate:rate})
-      
-      // other logic
+  const updateReviewMutation = useMutation({
+    mutationKey: ['reviews'],
+    mutationFn: (data) => handleUpdateReview(data),
+    onSuccess: () => {
+      clientQuery.invalidateQueries(['reviews']);
+      setUpdateModal(false);
+      toast.success('Review updated successfully!');
+    },
+    onError: () => {
+      toast.error('Error updating review');
     }
-    
-    // console.log(rating);
-    
+  });
 
-    return (
-        <section className=' w-full h-full'>
-        <div className="w-full h-full card bg-base-100 shadow-xl">
-            <div className="card-body ">
-                <img className='h-28 w-28 rounded-xl' src={UserPhoto} alt="" />
-                <h2 className="text-xl">Name: {UserName}</h2>
-                <h2 className="card-title">Service: {serviceTitle}</h2>
-                <h2 className="">Company Name: {companyName}</h2>
-               <div className='flex justify-start items-center gap-1'>
-               {
-                    Array(review?.rate).fill(null).map((_,index)=><FaStar key={index} fill="gold" />)
-                }
-               </div>
-                
-                <p>Review: {review}</p>
-                <p>Date: {getCurrentDate()}</p>
-                <div className="card-actions justify-end">
-                    <button onClick={()=>setUpdateModal(true)} className="btn bg-yellow-400">Update</button>
-                    <button  onClick={()=>deleteReviewMutaion.mutate(_id)} className="btn bg-yellow-400">Delete</button>
-                </div>
-            </div>
+  const handleRating = (starValue) => {
+    setInputData({ ...inputData, rate: starValue });
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const finalData = { ...reviewData, ...inputData };
+    updateReviewMutation.mutate(finalData);
+  };
+
+  const getCurrentDate = () => {
+    const date = new Date();
+    const options = { day: '2-digit', month: 'short', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  };
+
+  return (
+    <section className="w-full h-full">
+      <div className="w-full h-full card bg-base-100 shadow-xl">
+        <div className="card-body">
+          <img className="h-28 w-28 rounded-xl" src={UserPhoto} alt="User" />
+          <h2 className="text-xl">Name: {UserName}</h2>
+          <h2 className="card-title">Service: {serviceTitle}</h2>
+          <h2>Company Name: {companyName}</h2>
+
+          {/* Rating Display */}
+          <div className="flex justify-start items-center gap-1">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <FaStar key={index} fill={index < rate ? "gold" : "lightgray"} />
+            ))}
+          </div>
+
+          <p>Review: {reviewData.review}</p>
+          <p>Date: {getCurrentDate()}</p>
+          <div className="card-actions justify-end">
+            <button onClick={() => setUpdateModal(true)} className="btn bg-yellow-400">Update</button>
+            <button onClick={() => deleteReviewMutation.mutate(_id)} className="btn bg-yellow-400">Delete</button>
+          </div>
         </div>
-        
-        {
-            updateModal ?
-            <section className='fixed flex justify-center items-center top-0 bottom-0 left-0 right-0 bg-black/45 z-50'>
-            <form onSubmit={handleUpdate}
-            className="bg-white w-10/12 mx-auto h-4/5 md:h-5/6 lg:h-2/3 shadow rounded-lg p-6 mb-8 relative"
+      </div>
+
+      {/* Update Modal */}
+      {updateModal && (
+        <section
+          onClick={(e) => e.target === e.currentTarget && setUpdateModal(false)}
+          className="fixed inset-0 flex justify-center items-center bg-black/50 z-50 px-4"
+        >
+          <form
+            onSubmit={handleUpdate}
+            className="bg-white w-full max-w-lg h-auto md:max-h-[80vh] shadow-xl rounded-lg p-6 relative overflow-y-auto"
           >
-            <h3 className="text-lg font-semibold mb-4">Update Review</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+              Update Review
+            </h3>
+
+            {/* Review Input */}
             <textarea
-              onChange={(e)=>setInputData({...inputData, review:e.target.value})}
+              onChange={(e) =>
+                setInputData({ ...inputData, review: e.target.value })
+              }
               className="w-full border rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
               rows="4"
-              name='review'
+              name="review"
               placeholder="Write your review here..."
-              defaultValue={review}
-              // value={newReview.comment}
-              // onChange={(e) =>
-              //   setNewReview({ ...newReview, comment: e.target.value })
-              // }
+              defaultValue={reviewData.review}
               required
             ></textarea>
-            
-  
-         {/* rating */}
-            <div className="flex items-center mb-4">
-              <span className="mr-2">Your Rating:</span>
-                
-              <div className="flex flex-row space-x-2">
-                {/* {Array.from({ length: 5 }).map((_, index) => {
-                  const starValue = index + 1; 
+
+            {/* Rating Selection */}
+            <div className="flex flex-col items-center mb-4">
+              <span className="mb-2 text-gray-700">Your Rating:</span>
+              <div className="flex space-x-2">
+                {Array.from({ length: 5 }).map((_, index) => {
+                  const starValue = index + 1;
                   return (
                     <span
                       key={index}
-                      className={`cursor-pointer text-2xl ${starValue <= rate ? 'text-yellow-500' : 'text-gray-400'
+                      className={`cursor-pointer text-2xl ${starValue <= inputData.rate
+                        ? "text-yellow-500"
+                        : "text-gray-400"
                         }`}
-                      onClick={() => handleRating(starValue)} 
+                      onClick={() => handleRating(starValue)}
                     >
                       ★
                     </span>
                   );
-                })} */}
-                {/* {Array(rate).fill(null).map((_, index) => <FaStar key={index} fill="gold" />)} */}
+                })}
               </div>
             </div>
-            
-  
-  
-  
-  
-  
-            <div>
-              {/* <h2>{user?.photoURL}</h2> */}
-              <img referrerPolicy='no-referrer' className='h-24 w-24 rounded-full' src={user?.photoURL} alt="" />
-              <h2>Name: {user?.displayName}</h2>
-              <h2>Email: {user?.email}</h2>
+
+            {/* User Info */}
+            <div className="flex items-center space-x-3 border-t pt-4">
+              <img
+                referrerPolicy="no-referrer"
+                className="h-16 w-16 rounded-full border"
+                src={user?.photoURL}
+                alt="Current User"
+              />
+              <div>
+                <h2 className="font-medium text-gray-700">Name: {user?.displayName}</h2>
+                <h2 className="text-gray-600 text-sm">Email: {user?.email}</h2>
+              </div>
             </div>
-            <button
-           
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition mt-3"
+
+            {/* Buttons */}
+            <div className="flex justify-center mt-6">
+              {/* <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition w-full"
+              >
+                Submit Review
+              </button> */}
+              <button
+                type="submit"
+                className="relative px-6 py-3 rounded-lg text-white font-semibold 
+             bg-gradient-to-r from-yellow-400 to-orange-500 
+             hover:from-orange-500 hover:to-yellow-400 
+             transition-all duration-300 ease-in-out 
+             shadow-lg hover:shadow-yellow-500/50 
+             border-2 border-transparent hover:border-yellow-400 
+             before:absolute before:inset-0 before:animate-glow-border"
+              >
+                Submit Review
+              </button>
+            </div>
+
+            {/* Close Button */}
+            <span
+              onClick={() => setUpdateModal(false)}
+              className="absolute top-3 right-3 cursor-pointer text-gray-500 hover:text-gray-700 text-xl"
             >
-              Submit Review
-            </button>
-            <span onClick={()=>setUpdateModal(false)} className='absolute top-5 right-5 z-20 btn btn-ghost border-2 rounded-xl'>close</span>
-              </form>
-              
-              </section>
-               : ""
-        }
+              ✖
+            </span>
+          </form>
+        </section>
+      )}
+
     </section>
-    );
+  );
 };
 
 export default ReviewCard;

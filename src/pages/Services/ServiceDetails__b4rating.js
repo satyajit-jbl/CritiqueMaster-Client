@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Rating } from 'react-simple-star-rating';
 import { authContext } from '../../component/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import AllReviews from './AllReviews';
@@ -13,8 +14,8 @@ const ServiceDetails = () => {
   const { user } = useContext(authContext);
   const clientQuery = useQueryClient();
   const { addReview } = useReviews();
-  const { id } = useParams();
 
+  const { id } = useParams();
   const [service, setService] = useState({});
   const [rating, setRating] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -36,7 +37,7 @@ const ServiceDetails = () => {
     fetchServiceData();
   }, [id]);
 
-  const { category, companyName, description, price, serviceImage, serviceTitle, website, _id } = service || {};
+  const { category, companyName, description, price, serviceImage, serviceTitle, ReviewCount, _id, website } = service || {};
 
   const addReviewMutation = useMutation({
     mutationKey: ['reviews'],
@@ -66,14 +67,15 @@ const ServiceDetails = () => {
     const email = user?.email;
     const userName = user?.displayName;
     const userPhoto = user?.photoURL;
+    const rate = rating;
     const addedDate = new Date().toLocaleDateString();
 
-    const reviewData = { serviceTitle, companyName, review, serviceId, email, userName, userPhoto, rate: rating, addedDate };
+    const reviewData = { serviceTitle, companyName, review, serviceId, email, userName, userPhoto, rate, addedDate };
     addReviewMutation.mutate(reviewData);
   };
 
-  const handleRating = (starValue) => {
-    setRating(starValue); // Set the clicked star as the rating
+  const handleRating = (rate) => {
+    setRating(rate);
   };
 
   if (loading) return <div className="text-center">Loading...</div>;
@@ -89,34 +91,17 @@ const ServiceDetails = () => {
             alt={serviceTitle}
             className="w-full h-64 object-cover rounded-lg shadow-md"
           />
-          <p className="text-md text-gray-800"><strong>Company:</strong> {companyName}</p>
-          <p className="text-md text-blue-600"><strong>Website:</strong> <a href={website} target="_blank" rel="noopener noreferrer">{website}</a></p>
         </div>
 
         {/* Right side: Description and Details */}
         <div className="md:w-1/2 w-full md:pl-6 flex flex-col justify-start">
-          {/* <h1 className="text-2xl font-semibold text-gray-800 mb-4">{serviceTitle}</h1> */}
-          <h1
-            className="text-2xl font-semibold text-gray-800 mb-4 relative inline-block 
-  bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent 
-  bg-clip-text animate-glow"
-          >
-            {serviceTitle}
-          </h1>
-
-
-          {/* <h1 
-  className="text-3xl md:text-4xl font-semibold text-gray-800 mb-4 
-  w-full text-center transition-all duration-300 animate-fadeIn"
->
-  {serviceTitle}
-</h1> */}
+          <h1 className="text-3xl font-semibold text-gray-800 mb-4">{serviceTitle}</h1>
           <p className="text-lg text-gray-600 mb-6">{description}</p>
           <div className="flex flex-col space-y-2 mb-6">
             <p className="text-md text-gray-800"><strong>Category:</strong> {category}</p>
-            {/* <p className="text-md text-gray-800"><strong>Company:</strong> {companyName}</p> */}
+            <p className="text-md text-gray-800"><strong>Company:</strong> {companyName}</p>
             <p className="text-md text-gray-800"><strong>Price:</strong> ${price}</p>
-            {/* <p className="text-md text-blue-600"><strong>Website:</strong> <a href={website} target="_blank" rel="noopener noreferrer">{website}</a></p> */}
+            <p className="text-md text-blue-600"><strong>Website:</strong> <a href={website} target="_blank" rel="noopener noreferrer">{website}</a></p>
           </div>
         </div>
       </div>
@@ -134,10 +119,9 @@ const ServiceDetails = () => {
             required
           ></textarea>
 
-          {/* Custom Star Rating */}
           <div className="flex items-center mb-4">
             <span className="mr-2">Your Rating:</span>
-            <div className="flex space-x-1">
+            <div className="flex space-x-2">
               {Array.from({ length: 5 }).map((_, index) => {
                 const starValue = index + 1;
                 return (
@@ -151,7 +135,6 @@ const ServiceDetails = () => {
                 );
               })}
             </div>
-            <span className="ml-2 text-gray-600">{rating} / 5</span>
           </div>
 
           <div className="flex items-center mb-4 space-x-4">
@@ -162,19 +145,7 @@ const ServiceDetails = () => {
             </div>
           </div>
 
-          {/* <button type="submit" className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition mt-3">
-            Submit Review
-          </button> */}
-          <button
-            type="submit"
-            className="relative px-6 py-3 rounded-lg text-white font-semibold 
-             bg-gradient-to-r from-yellow-400 to-orange-500 
-             hover:from-orange-500 hover:to-yellow-400 
-             transition-all duration-300 ease-in-out 
-             shadow-lg hover:shadow-yellow-500/50 
-             border-2 border-transparent hover:border-yellow-400 
-             before:absolute before:inset-0 before:animate-glow-border"
-          >
+          <button type="submit" className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition mt-3">
             Submit Review
           </button>
         </form>

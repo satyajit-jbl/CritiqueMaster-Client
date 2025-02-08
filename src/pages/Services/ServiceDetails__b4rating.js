@@ -66,11 +66,11 @@ const ServiceDetails = () => {
     const serviceId = _id;
     const email = user?.email;
     const userName = user?.displayName;
-    const userPhoto = user?.photoURL;
+    const UserPhoto = user?.photoURL;
     const rate = rating;
     const addedDate = new Date().toLocaleDateString();
 
-    const reviewData = { serviceTitle, companyName, review, serviceId, email, userName, userPhoto, rate, addedDate };
+    const reviewData = { serviceTitle, companyName, review, serviceId, email, userName, UserPhoto, rate, addedDate };
     addReviewMutation.mutate(reviewData);
   };
 

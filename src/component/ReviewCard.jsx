@@ -13,13 +13,14 @@ const ReviewCard = ({ reviewData }) => {
   const [updateModal, setUpdateModal] = useState(false);
   const { handleUpdateReview, handleDEleteReview } = useReviews();
   const clientQuery = useQueryClient();
-  const myInfo = useTest();
+  // const myInfo = useTest();
   const [inputData, setInputData] = useState({
     rate: reviewData.rate || 0,
     review: reviewData.review || ""
   });
 
   const { UserName, UserPhoto, companyName, email, serviceId, serviceTitle, _id, rate } = reviewData;
+  // console.log( reviewData.UserPhoto);
 
   const deleteReviewMutation = useMutation({
     mutationKey: ['reviews'],
@@ -168,7 +169,7 @@ const ReviewCard = ({ reviewData }) => {
              border-2 border-transparent hover:border-yellow-400 
              before:absolute before:inset-0 before:animate-glow-border"
               >
-                Submit Review
+                Update Review
               </button>
             </div>
 

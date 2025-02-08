@@ -83,8 +83,8 @@ const ServiceDetails = () => {
     const addedDate = new Date().toLocaleDateString(); 
 
 
-    // console.log(review, email, UserName, UserPhoto);
-    console.table({ review, email, UserName, UserPhoto });
+    // console.log(review, email, UserName, userPhoto);
+    console.table({ review, email, UserName, userPhoto });
     const reviewData = { serviceTitle, companyName, review, serviceId, email, UserName, UserPhoto, rate, addedDate };
    
     addReviewMutaion.mutate(reviewData)

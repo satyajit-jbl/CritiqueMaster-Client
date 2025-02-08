@@ -18,7 +18,7 @@ const ReviewCard = ({reviewData}) => {
       rate: 1, 
       review: ""
     });
-    const {UserName, UserPhoto, companyName, email, review, serviceId, serviceTitle, _id, rate} = reviewData;
+    const {UserName, userPhoto, companyName, email, review, serviceId, serviceTitle, _id, rate} = reviewData;
 
     const deleteReviewMutaion = useMutation({
       mutationKey: ['reviews'],
@@ -69,7 +69,7 @@ const ReviewCard = ({reviewData}) => {
       <section className='w-full h-full'>
         <div className="card w-full max-w-sm bg-base-100 shadow-lg">
           <div className="card-body flex flex-col">
-            <img className='h-28 w-28 rounded-xl mx-auto' src={UserPhoto} alt="" />
+            <img className='h-28 w-28 rounded-xl mx-auto' src={userPhoto} alt="" />
             <h2 className="text-xl font-bold text-center">{UserName}</h2>
             <h3 className="text-lg font-semibold text-center">{serviceTitle}</h3>
             <h4 className="text-md text-center">{companyName}</h4>

@@ -11,6 +11,7 @@
     animation: float 3s ease-in-out infinite;
   }
 
+  /* Review button style */
   @keyframes glow-border {
     0% { box-shadow: 0 0 5px rgba(255, 193, 7, 0.3); }
     50% { box-shadow: 0 0 15px rgba(255, 193, 7, 0.7); }

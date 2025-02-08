@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../../component/AuthProvider/AuthProvider";
 import logo from "../../assets/logo.png"
@@ -6,6 +6,7 @@ import logo from "../../assets/logo.png"
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {user, logOut} =useContext(authContext);
+  const menuRef = useRef(null); // ref for dropdown menu 
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,6 +17,20 @@ const Navbar = () => {
     setIsMenuOpen(false);
     // .then(()=>alert('successfully logout'))
   }
+
+  useEffect(()=>{
+    const handleClickOutside = (event) =>{
+      if(menuRef.current && !menuRef.current.contains(event.target)){
+        setIsMenuOpen(false);
+      }
+    };
+    if(isMenuOpen){
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return()=>{
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  },[isMenuOpen])
 
   return (
     // <nav className=" shadow-md sticky top-0 z-50 bg-slate-200 backdrop-blur-lg ">
@@ -115,14 +130,14 @@ const Navbar = () => {
           // <div className="lg:hidden">
           // <div className="lg:hidden flex justify-end">
           // <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-1/2 mx-w-sm px-6 space-y-4 py-4 bg-white rounded-lg flex justify-end">
-          <div className="absolute top-full left-3/4 transform -translate-x-1/2 bg-white shadow-md rounded-lg w-1/2 md:w-1/4 max-w-sm space-y-4 py-4 px-6 ">
+          <div ref={menuRef} className="absolute top-full left-3/4 transform -translate-x-1/2 bg-white shadow-md rounded-lg w-1/2 md:w-1/4 max-w-sm space-y-4 py-4 px-6 ">
             {/* <div className="w-1/2 mx-w-sm shadow-md rounded-lg bg-white px-6 space-y-4 py-4"> */}
             <div className="">
               {/* <Link to="/" className="block text-gray-600 hover:text-blue-600"> */}
               <Link to="/" className="block font-bold hover:text-blue-600" style={{ color: '#FF9800' }}>
                 Home
               </Link>
-              <Link to="/services" className="block text-gray-600 hover:text-blue-600">
+              <Link to="/services" onClick={()=>setIsMenuOpen(false)} className="block text-gray-600 hover:text-blue-600">
                 Services
               </Link>
               {user ? (

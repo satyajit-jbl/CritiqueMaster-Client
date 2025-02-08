@@ -5,8 +5,8 @@ import useReviews from "../../Hooks/useReviews";
 import { useQuery } from "@tanstack/react-query";
 
 
-const AllReviews = ({serviceId}) => {
-    const {getReviews} = useReviews()
+const AllReviews = ({ serviceId }) => {
+    const { getReviews } = useReviews()
     // const [reviews, setReviews] = useState([]);
     // useEffect(()=>{
     //     fetchAllReviews()
@@ -17,14 +17,20 @@ const AllReviews = ({serviceId}) => {
     // }
 
     // let count = reviews.length;
-    const {data: reviews, isLoading, isError, error, } = useQuery({
+
+
+    const { data: reviews, isLoading, isError, error, } = useQuery({
         queryKey: ["reviews", serviceId],
-        queryFn: ()=>getReviews(serviceId)
-        
+        queryFn: () => getReviews(serviceId)
+
     });
+    console.log("Service ID:", serviceId);
 
     if (isLoading) {
-        return <p className='text-5xl text-center font-bold text-green-400'>loading.... </p>
+        return <p className="text-5xl text-center font-bold text-green-400">
+            <span className="loading loading-infinity loading-xl"></span>
+        </p>
+        // <p className='text-5xl text-center font-bold text-green-400'>loading.... </p>
     }
 
     if (isError) {
@@ -43,7 +49,7 @@ const AllReviews = ({serviceId}) => {
     //       setReviews(reviewFilter);
     //       alert("Deleted Successfully")
     //     }
-        
+
     //     }catch(error){
     //       console.log(error);
     //     }
@@ -71,10 +77,10 @@ const AllReviews = ({serviceId}) => {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {/* <div className="flex justify-between flex-wrap gap-5 bg-green-500"> */}
+            {/* <div className="flex justify-between flex-wrap gap-5 bg-green-500"> */}
             {/* <p>{count}</p> */}
             {
-                reviews?.map(review1=> <ReviewCard key={review1._id} reviewData={review1}></ReviewCard>)
+                reviews?.map(review1 => <ReviewCard key={review1._id} reviewData={review1}></ReviewCard>)
             }
         </div>
     );

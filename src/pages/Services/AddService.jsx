@@ -3,6 +3,7 @@ import { authContext } from "../../component/AuthProvider/AuthProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 const AddService = () => {
     const {user} = useContext(authContext)
@@ -216,12 +217,15 @@ const AddService = () => {
           </div>
         </div>
 
-        <button
+        <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
           type="submit"
-          className="w-full bg-indigo-600 text-white py-2 px-4 mt-6 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300"
+          // className="w-full bg-yellow-400 text-white py-2 px-4 mt-6 rounded-md hover:bg-orange-400 focus:outline-none focus:ring focus:ring-indigo-300"
+          className="bg-yellow-400 text-white text-sm font-medium py-2 w-full mt-4 px-4 rounded-lg shadow hover:bg-yellow-500 transition-all duration-300"
         >
-          Submit
-        </button>
+          Add Service
+        </motion.button>
       </form>
     </div>
   );

@@ -12,24 +12,27 @@ const Navbar = () => {
   };
 
   const handleLogout = ()=>{
-    logOut()
+    logOut();
+    setIsMenuOpen(false);
     // .then(()=>alert('successfully logout'))
   }
 
   return (
-    <nav className=" shadow-md sticky top-0 z-50 bg-slate-200 backdrop-blur-lg ">
+    // <nav className=" shadow-md sticky top-0 z-50 bg-slate-200 backdrop-blur-lg ">
+    <nav className="relative h-16 shadow-md sticky top-0 z-50 bg-slate-200 backdrop-blur-lg ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className=" flex flex-shrink-0 items-center">
-            <img src={logo} alt="" />
+            <Link to="/"><img src={logo} alt="" /></Link>
             <Link to="/" className="text-xl font-bold text-yellow-500 hover:text-blue-600">
             CritiqueMaster
             </Link>
           </div>
 
           {/* Links */}
-          <div className="hidden md:flex space-x-6 items-center">
+          {/* hide menu from md, so lg:flex */}
+          <div className="hidden lg:flex space-x-6 items-center">
             <Link to="/" className="text-yellow-500 font-bold hover:text-blue-600">
               Home
             </Link>
@@ -75,7 +78,8 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* toggle on from md, so lg:hidden */}
+          <div className="lg:hidden">
             <button
               onClick={toggleMenu}
               className="text-gray-600 hover:text-blue-600 focus:outline-none">
@@ -107,9 +111,15 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="space-y-4 py-4">
-              <Link to="/" className="block text-gray-600 hover:text-blue-600">
+          // dropdown menu on from md, so lg:hidden
+          // <div className="lg:hidden">
+          // <div className="lg:hidden flex justify-end">
+          // <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-1/2 mx-w-sm px-6 space-y-4 py-4 bg-white rounded-lg flex justify-end">
+          <div className="absolute top-full left-3/4 transform -translate-x-1/2 bg-white shadow-md rounded-lg w-1/2 md:w-1/4 max-w-sm space-y-4 py-4 px-6 ">
+            {/* <div className="w-1/2 mx-w-sm shadow-md rounded-lg bg-white px-6 space-y-4 py-4"> */}
+            <div className="">
+              {/* <Link to="/" className="block text-gray-600 hover:text-blue-600"> */}
+              <Link to="/" className="block font-bold hover:text-blue-600" style={{ color: '#FF9800' }}>
                 Home
               </Link>
               <Link to="/services" className="block text-gray-600 hover:text-blue-600">
@@ -119,16 +129,19 @@ const Navbar = () => {
                 <>
                   <Link
                     to="/add-service"
+                    onClick={()=>setIsMenuOpen(false)}
                     className="block text-gray-600 hover:text-blue-600">
                     Add Service
                   </Link>
                   <Link
-                    to="/my-reviews"
+                    to="/reviews"
+                    onClick={()=>setIsMenuOpen(false)}
                     className="block text-gray-600 hover:text-blue-600">
                     My Reviews
                   </Link>
                   <Link
                     to="/my-services"
+                    onClick={()=>setIsMenuOpen(false)}
                     className="block text-gray-600 hover:text-blue-600">
                     My Services
                   </Link>
@@ -141,6 +154,7 @@ const Navbar = () => {
                     <button
                       // onClick={onLogout}
                       onClick={handleLogout}
+                      
                       className="text-gray-600 hover:text-blue-600">
                       Logout
                     </button>
@@ -148,7 +162,7 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Link to="/login" className="block text-gray-600 hover:text-blue-600">
+                  <Link to="/login" onClick={()=>setIsMenuOpen(false)} className="block text-gray-600 hover:text-blue-600">
                     Login
                   </Link>
                   <Link

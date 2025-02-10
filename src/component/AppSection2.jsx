@@ -92,7 +92,7 @@ const AppSection2 = () => {
               initial="hidden"
               animate="visible"
             >
-              <button className="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition">
+              <button className="bg-[#2563EB] text-black font-semibold py-2 px-4 rounded-lg shadow hover:bg-[#1D4ED8] transition">
                 Explore More
               </button>
             </motion.div>

@@ -33,7 +33,7 @@ const ImageSlider = () => {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="w-full flex-shrink-0 h-[600px] relative"
+                className="w-full flex-shrink-0 h-[300px] relative"
               >
                 <img
                   src={slide.image}

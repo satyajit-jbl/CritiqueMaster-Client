@@ -21,10 +21,12 @@ const ServiceCard = ({ service }) => {
       className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transform hover:scale-105 transition-all duration-300 mx-auto mt-6 w-full max-w-sm"
     >
       <div className="h-56">
-        <img
+        <motion.img
           className="object-cover w-full h-full rounded-t-lg"
           src={serviceImage}
           alt={serviceTitle}
+          whileHover={{scale: 1.1}}
+          transition={{duration: 0.3, ease:"easeOut"}}
         />
       </div>
       <div className="p-4 flex flex-col h-56 justify-between">
@@ -42,7 +44,7 @@ const ServiceCard = ({ service }) => {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-yellow-400 text-white text-sm font-medium py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition-all duration-300"
+              className="bg-[#2563EB] text-white text-sm font-medium py-2 px-4 rounded-lg shadow hover:bg-[#1D4ED8] transition-all duration-300"
             >
               See Details
             </motion.button>

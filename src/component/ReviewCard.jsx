@@ -69,7 +69,10 @@ const ReviewCard = ({ reviewData }) => {
         <div className="card-body">
           <img className="h-28 w-28 rounded-xl" src={UserPhoto} alt="User" />
           <h2 className="text-xl">Name: {UserName}</h2>
-          <h2 className="card-title">Service: {serviceTitle}</h2>
+          {/* <h2 className="card-title">{serviceTitle}</h2> */}
+          <h2 className="text-xl font-semibold text-gray-800 mb-4 relative inline-block 
+  bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent 
+  bg-clip-text animate-glow">{serviceTitle}</h2>
           <h2>Company Name: {companyName}</h2>
 
           {/* Rating Display */}
@@ -82,8 +85,8 @@ const ReviewCard = ({ reviewData }) => {
           <p>Review: {reviewData.review}</p>
           <p>Date: {getCurrentDate()}</p>
           <div className="card-actions justify-end">
-            <button onClick={() => setUpdateModal(true)} className="btn bg-yellow-400">Update</button>
-            <button onClick={() => deleteReviewMutation.mutate(_id)} className="btn bg-yellow-400">Delete</button>
+            <button onClick={() => setUpdateModal(true)} className="btn text-[#FFFFFF] bg-[#2563EB]">Update</button>
+            <button onClick={() => deleteReviewMutation.mutate(_id)} className="btn text-[#FFFFFF] bg-[#2563EB]">Delete</button>
           </div>
         </div>
       </div>

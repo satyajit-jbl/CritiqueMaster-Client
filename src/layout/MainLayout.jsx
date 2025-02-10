@@ -9,7 +9,7 @@ import DynamicTitle from '../component/DynamicTitle';
 
 const MainLayout = () => {
     return (
-        <div className=' mx-auto min-h-screen flex flex-col'>
+        <div className='mx-auto min-h-screen flex flex-col'>
             <DynamicTitle></DynamicTitle>
             <Navbar></Navbar>
             {/* <div className='flex-grow'></div> */}

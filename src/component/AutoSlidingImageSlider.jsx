@@ -46,14 +46,14 @@ const AutoSlidingImageSlider = () => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="w-full flex-shrink-0 h-[600px] relative"
+            className="w-full flex-shrink-0 h-[500px] relative"
           >
             <img
               src={slide.image}
               alt={slide.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-8">
+            <div className="px-12 absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-8">
               <h2 className="text-3xl font-bold">{slide.title}</h2>
               <p className="mt-2 text-lg">{slide.description}</p>
             </div>

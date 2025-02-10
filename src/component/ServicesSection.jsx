@@ -8,7 +8,7 @@ function ServicesSection() {
       {/* Banner Section */}
       <div className="flex flex-col md:flex-row">
         {/* Left Black Section */}
-        <div className="bg-black text-yellow-400 flex-1 py-10 px-8 flex items-center justify-center">
+        <div className="bg-[#111827] text-[#FFFFFF] flex-1 py-10 px-8 flex items-center justify-center">
           <motion.h1
             className="text-3xl md:text-4xl font-bold uppercase text-center"
             initial={{ opacity: 0, y: -50 }}
@@ -20,7 +20,7 @@ function ServicesSection() {
         </div>
 
         {/* Right Yellow Section */}
-        <div className="bg-yellow-400 text-black flex-1 py-10 px-8 flex flex-col justify-center space-y-6">
+        <div className="bg-[#2563EB] text-[#FFFFFF] flex-1 py-10 px-8 flex flex-col justify-center space-y-6">
           <motion.div
             className="flex items-center space-x-4"
             initial={{ opacity: 0, x: -50 }}

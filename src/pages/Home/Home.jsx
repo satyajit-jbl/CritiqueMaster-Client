@@ -1,6 +1,6 @@
 import React from 'react';
 import AutoSlidingImageSlider from '../../component/AutoSlidingImageSlider';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../../component/ServiceCard';
 import AppSection from '../../component/AppSection';
 import ServicesSection from '../../component/ServicesSection';
@@ -9,6 +9,7 @@ import AppSection2 from '../../component/AppSection2';
 import Partners from '../Partners/partners';
 import Statistics from '../../component/Statistics';
 import Partners2 from '../Partners/Partners2';
+
 
 
 const Home = () => {
@@ -27,6 +28,14 @@ const Home = () => {
                     services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </div>
+            <div className='text-center my-5'>
+                <Link to="/services">
+                    <button className='px-8 py-3 text-primary font-semibold border-b-4 border-blue-600 bg-transparent hover:bg-blue-50 hover:text-blue-800 rounded-xl transition duration-300 ease-in-out'>
+                        See All Services
+                    </button>
+                </Link>
+            </div>
+
             <Statistics></Statistics>
             {/* <Partners></Partners> */}
             <Partners2></Partners2>

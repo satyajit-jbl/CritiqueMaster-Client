@@ -8,7 +8,7 @@ function ServicesSection() {
       {/* Banner Section */}
       <div className="flex flex-col md:flex-row">
         {/* Left Black Section */}
-        <div className="bg-[#111827] text-[#FFFFFF] flex-1 py-10 px-8 flex items-center justify-center">
+        <div className="bg-[#111827] text-whiteContr flex-1 py-10 px-8 flex items-center justify-center">
           <motion.h1
             className="text-3xl md:text-4xl font-bold uppercase text-center"
             initial={{ opacity: 0, y: -50 }}
@@ -20,7 +20,7 @@ function ServicesSection() {
         </div>
 
         {/* Right Yellow Section */}
-        <div className="bg-[#2563EB] text-[#FFFFFF] flex-1 py-10 px-8 flex flex-col justify-center space-y-6">
+        <div className="bg-primary text-whiteContr flex-1 py-10 px-8 flex flex-col justify-center space-y-6">
           <motion.div
             className="flex items-center space-x-4"
             initial={{ opacity: 0, x: -50 }}
@@ -46,7 +46,7 @@ function ServicesSection() {
       <div className="bg-white py-16">
         <div className="container mx-auto px-4 text-center">
           <motion.h2
-            className="text-3xl font-bold text-yellow-400 uppercase"
+            className="text-3xl font-bold text-title uppercase"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -69,7 +69,7 @@ function ServicesSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <FaSearch className="h-12 w-12 text-yellow-400" />
+              <FaSearch className="h-12 w-12 text-title" />
               <h3 className="text-lg font-semibold mt-4">Browse Services</h3>
               <p className="text-gray-600 text-sm text-center mt-2">
                 Select types of services you want and click on the button.
@@ -82,7 +82,7 @@ function ServicesSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: .5 }}
             >
-              <FaCalendarAlt className="h-12 w-12 text-yellow-400" />
+              <FaCalendarAlt className="h-12 w-12 text-title" />
               <h3 className="text-lg font-semibold mt-4">Schedule Service</h3>
               <p className="text-gray-600 text-sm text-center mt-2">
                 Login and Register with your details.
@@ -95,7 +95,7 @@ function ServicesSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <FaRegFileAlt className="h-12 w-12 text-yellow-400" />
+              <FaRegFileAlt className="h-12 w-12 text-title" />
               <h3 className="text-lg font-semibold mt-4">Book Service</h3>
               <p className="text-gray-600 text-sm text-center mt-2">
                 Fill the form to get services easily.
@@ -108,7 +108,7 @@ function ServicesSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <FaCog className="h-12 w-12 text-yellow-400" />
+              <FaCog className="h-12 w-12 text-title" />
               <h3 className="text-lg font-semibold mt-4">Resolve Issues</h3>
               <p className="text-gray-600 text-sm text-center mt-2">
                 Our team members will contact you and solve your problems.

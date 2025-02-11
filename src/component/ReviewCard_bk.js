@@ -84,8 +84,8 @@ const ReviewCard = ({reviewData}) => {
             <p className="text-center mt-2">Date: {getCurrentDate()}</p>
 
             <div className="card-actions justify-center gap-2 mt-4">
-              <button onClick={() => setUpdateModal(true)} className="btn bg-[#2563EB] w-full sm:w-auto">Update</button>
-              <button onClick={() => deleteReviewMutaion.mutate(_id)} className="btn bg-[#2563EB] w-full sm:w-auto">Delete</button>
+              <button onClick={() => setUpdateModal(true)} className="btn bg-primary w-full sm:w-auto">Update</button>
+              <button onClick={() => deleteReviewMutaion.mutate(_id)} className="btn bg-primary w-full sm:w-auto">Delete</button>
             </div>
           </div>
         </div>

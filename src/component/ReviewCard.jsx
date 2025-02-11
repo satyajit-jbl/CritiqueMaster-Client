@@ -85,8 +85,8 @@ const ReviewCard = ({ reviewData }) => {
           <p>Review: {reviewData.review}</p>
           <p>Date: {getCurrentDate()}</p>
           <div className="card-actions justify-end">
-            <button onClick={() => setUpdateModal(true)} className="btn text-[#FFFFFF] bg-[#2563EB]">Update</button>
-            <button onClick={() => deleteReviewMutation.mutate(_id)} className="btn text-[#FFFFFF] bg-[#2563EB]">Delete</button>
+            <button onClick={() => setUpdateModal(true)} className="btn text-whiteContr bg-primary">Update</button>
+            <button onClick={() => deleteReviewMutation.mutate(_id)} className="btn text-whiteContr bg-primary">Delete</button>
           </div>
         </div>
       </div>

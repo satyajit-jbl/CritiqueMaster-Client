@@ -26,7 +26,19 @@ export default withMT({
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#2563EB', // Custom Blue
+        secondary: '#FACC15', // Yellow
+        title: '#FACC15', // darkYellow
+        accent: '#F97316', // Orange
+        dark: '#111827', // footer, dark color
+        whiteContr: ' #FFFFFF',
+        light: '#F9FAFB',
+        hover:'#1D4ED8' 
+        
+      },
+    },
   },
   plugins: [
     require('daisyui'),

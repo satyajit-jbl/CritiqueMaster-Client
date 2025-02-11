@@ -34,13 +34,13 @@ const Navbar = () => {
 
   return (
     // <nav className=" shadow-md sticky top-0 z-50 bg-slate-200 backdrop-blur-lg ">
-    <nav className="relative h-16 py-2 shadow-md sticky top-0 z-50 bg-[#1E3A8A] backdrop-blur-lg ">
+    <nav className="relative h-16 shadow-md sticky top-0 z-50 bg-[#1E3A8A] backdrop-blur-lg ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className=" flex flex-shrink-0 items-center">
             <Link to="/"><img src={logo} alt="" /></Link>
-            <Link to="/" className="text-xl font-bold text-[#FFFFFF] hover:text-blue-600">
+            <Link to="/" className="text-xl font-bold text-whiteContr hover:text-blue-600">
             CritiqueMaster
             </Link>
           </div>
@@ -48,23 +48,23 @@ const Navbar = () => {
           {/* Links */}
           {/* hide menu from md, so lg:flex */}
           <div className="hidden lg:flex space-x-6 items-center">
-            <Link to="/" className="text-[#FFFFFF] font-bold hover:text-blue-600">
+            <Link to="/" className="text-whiteContr font-bold hover:text-blue-600">
               Home
             </Link>
             {/* <Link to="/services" className=" font-bold hover:text-blue-600" style={{ color: '#FF9800' }}> */}
-            <Link to="/services" className="text-[#FFFFFF] font-bold hover:text-blue-600">
+            <Link to="/services" className="text-whiteContr font-bold hover:text-blue-600">
               Services
             </Link>
             {/* {isLoggedIn ? ( */}
             {user ? (
               <>
-                <Link to="/add-service" className="text-[#FFFFFF] font-bold hover:text-blue-600">
+                <Link to="/add-service" className="text-whiteContr font-bold hover:text-blue-600">
                   Add Service
                 </Link>
-                <Link to="/reviews" className="text-[#FFFFFF] font-bold hover:text-blue-600">
+                <Link to="/reviews" className="text-whiteContr font-bold hover:text-blue-600">
                   My Reviews
                 </Link>
-                <Link to="/my-services" className="text-[#FFFFFF] font-bold hover:text-blue-600">
+                <Link to="/my-services" className="text-whiteContr font-bold hover:text-blue-600">
                   My Services
                 </Link>
                 <div className="flex items-center space-x-4">
@@ -76,17 +76,17 @@ const Navbar = () => {
                   />
                   <button
                     onClick={handleLogout}
-                    className="text-[#FFFFFF] font-bold hover:text-blue-600">
+                    className="text-whiteContr font-bold hover:text-blue-600">
                     Logout
                   </button>
                 </div>
               </>
             ) : (
               <>
-                <Link to="/login" className="text-[#FFFFFF] font-bold hover:text-blue-600">
+                <Link to="/login" className="text-whiteContr font-bold hover:text-blue-600">
                   Login
                 </Link>
-                <Link to="/register" className="text-[#FFFFFF] font-bold hover:text-blue-600">
+                <Link to="/register" className="text-whiteContr font-bold hover:text-blue-600">
                   Register
                 </Link>
               </>
@@ -98,7 +98,7 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={toggleMenu}
-              className="text-gray-600 hover:text-blue-600 focus:outline-none">
+              className="text-whiteContr hover:text-blue-600 focus:outline-none">
               <svg
                 className="w-6 h-6"
                 xmlns="http://www.w3.org/2000/svg"

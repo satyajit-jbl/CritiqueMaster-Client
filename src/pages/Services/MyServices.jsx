@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { BiSearch } from 'react-icons/bi';
+import { MdDeleteForever } from "react-icons/md";
 
 const MyServices = () => {
     const {user} = useContext(authContext)
@@ -32,8 +33,8 @@ const MyServices = () => {
 
     return (
         <div>
-            <div className=' mx-auto bg-yellow-400 py-5 p-3 flex items-center mt-10 gap-5'>
-                        <h1 className='py-5 text-4xl font-bold text-center'>My Services</h1>
+            <div className=' w-11/12 mx-auto bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 p-4 rounded-lg shadow-lg py-5 p-3 flex items-center mt-10 gap-5'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-600'>My Services</h1>
                             <BiSearch></BiSearch>
                             <input
                                 onKeyUp={(e) => setSearch(e.target.value)}
@@ -47,7 +48,7 @@ const MyServices = () => {
                                     className='input w-full max-w-xs' type="text" placeholder='Max Salary' />
                             </div> */}
                         </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto w-11/12">
                 
               
                 <table className="table">
@@ -96,9 +97,9 @@ const MyServices = () => {
                                 <span className="badge badge-ghost badge-sm">{service.price}</span>
                             </td>
                             <td>{service.description}</td>
-                            <th>
-                                <button onClick={()=>handleDelete(service._id)} className="btn btn-ghost btn-xs">X</button>
-                                <Link to={`/update/${service._id}`}><button className="btn btn-ghost btn-xs">Update</button></Link>
+                            <th className='flex justify-center items-center'>
+                                <button onClick={()=>handleDelete(service._id)} className=" btn-xs text-3xl text-red-600"> <MdDeleteForever /></button>
+                                <Link to={`/update/${service._id}`}><button className="btn btn-ghost btn-xs border border-blue-gray-300 hover:blue-500">Update</button></Link>
                             </th>
                         </tr>
 

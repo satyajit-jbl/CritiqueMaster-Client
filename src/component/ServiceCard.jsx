@@ -44,7 +44,7 @@ const ServiceCard = ({ service }) => {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#2563EB] text-white text-sm font-medium py-2 px-4 rounded-lg shadow hover:bg-[#1D4ED8] transition-all duration-300"
+              className="bg-primary text-white text-sm font-medium py-2 px-4 rounded-lg shadow hover:bg-hover transition-all duration-300"
             >
               See Details
             </motion.button>

@@ -40,6 +40,14 @@ const Reviews = () => {
 
     return (
         <section>
+            <div className="w-11/12 mx-auto text-center mt-5 mb-8 bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 p-4 rounded-lg shadow-lg">
+                <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-600">
+                Unfiltered Opinions, Trusted Reviews
+                </h1>
+                <p className="text-base md:text-lg lg:text-xl text-blue-900 mt-2">
+                Real experiences from real users—helping you make informed decisions
+                </p>
+            </div>
             <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 mb-10 gap-10 py-10">
                 {reviews.map((review) => (
                     <ReviewCard key={review._id} reviewData={review} />

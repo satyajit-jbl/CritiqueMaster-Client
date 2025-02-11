@@ -3,19 +3,15 @@ import { authContext } from "../../component/AuthProvider/AuthProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 const AddService = () => {
-    const {user} = useContext(authContext)
-    const navigate = useNavigate()
-    // console.log({user});
-    const email = user?.email;
-    const userName = user?.displayName;
-    const ProfileImage = user?.photoURL
+  const { user } = useContext(authContext);
+  const navigate = useNavigate();
+  const email = user?.email;
+  const userName = user?.displayName;
+  const ProfileImage = user?.photoURL;
 
-    // console.log(email);
-    // const {email, displayName} = {user};
-    // console.log(user.email, displayName);
   const [formData, setFormData] = useState({
     serviceImage: "",
     serviceTitle: "",
@@ -28,37 +24,48 @@ const AddService = () => {
     ReviewCount: 0,
   });
 
-  const addedDate = new Date().toLocaleDateString(); 
+  const addedDate = new Date().toLocaleDateString();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, addedDate, email, userName, ProfileImage, [name]: name === "price" ? parseInt(value) || 0 : value, });
+    setFormData({
+      ...formData,
+      addedDate,
+      email,
+      userName,
+      ProfileImage,
+      [name]: name === "price" ? parseInt(value) || 0 : value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log({ ...formData, addedDate });
-    try{
-        // Add API call, send data to server
-    const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/add-service`, formData)
-    // console.log(data);
-    //need to check , form reset not working
-    // formData.reset()
-    toast.success('Service added successfully!')
-    navigate('/my-services')
-    }catch(err){
-        // console.log(err);
-        toast.error(err.message)
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/add-service`,
+        formData
+      );
+      toast.success("Service added successfully!");
+      navigate("/my-services");
+    } catch (err) {
+      toast.error(err.message);
     }
-  }
-  ;
+  };
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-6">Add Service</h1>
+     
+      <div className="text-center mb-8 bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 p-4 rounded-lg shadow-lg">
+        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-600">
+        Add Your Service
+        </h1>
+        <p className="text-base md:text-lg lg:text-xl text-blue-900 mt-2">
+        Expand your business by listing your service with ease.
+        </p>
+      </div>
+
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Service Image */}
           <div>
             <label htmlFor="serviceImage" className="block text-gray-700 font-medium">
               Service Image URL
@@ -69,13 +76,12 @@ const AddService = () => {
               name="serviceImage"
               value={formData.serviceImage}
               onChange={handleChange}
-              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
               placeholder="Enter image URL"
               required
             />
           </div>
 
-          {/* Service Title */}
           <div>
             <label htmlFor="serviceTitle" className="block text-gray-700 font-medium">
               Service Title
@@ -86,13 +92,12 @@ const AddService = () => {
               name="serviceTitle"
               value={formData.serviceTitle}
               onChange={handleChange}
-              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
               placeholder="Enter service title"
               required
             />
           </div>
 
-          {/* Company Name */}
           <div>
             <label htmlFor="companyName" className="block text-gray-700 font-medium">
               Company Name
@@ -103,13 +108,12 @@ const AddService = () => {
               name="companyName"
               value={formData.companyName}
               onChange={handleChange}
-              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
               placeholder="Enter company name"
               required
             />
           </div>
 
-          {/* Website */}
           <div>
             <label htmlFor="website" className="block text-gray-700 font-medium">
               Website
@@ -120,13 +124,12 @@ const AddService = () => {
               name="website"
               value={formData.website}
               onChange={handleChange}
-              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
               placeholder="Enter website URL"
               required
             />
           </div>
 
-          {/* Category */}
           <div>
             <label htmlFor="category" className="block text-gray-700 font-medium">
               Category
@@ -136,7 +139,7 @@ const AddService = () => {
               name="category"
               value={formData.category}
               onChange={handleChange}
-              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
               required
             >
               <option value="" disabled>
@@ -150,7 +153,6 @@ const AddService = () => {
             </select>
           </div>
 
-          {/* Price */}
           <div>
             <label htmlFor="price" className="block text-gray-700 font-medium">
               Price
@@ -161,7 +163,7 @@ const AddService = () => {
               name="price"
               value={formData.price}
               onChange={handleChange}
-              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
               placeholder="Enter service price"
               min={0}
               required
@@ -169,7 +171,6 @@ const AddService = () => {
           </div>
         </div>
 
-        {/* Description */}
         <div className="mt-6">
           <label htmlFor="description" className="block text-gray-700 font-medium">
             Description
@@ -179,7 +180,7 @@ const AddService = () => {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+            className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
             placeholder="Enter service description"
             rows="4"
             required
@@ -187,42 +188,22 @@ const AddService = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          {/* Added Date */}
           <div>
             <label className="block text-gray-700 font-medium">Added Date</label>
-            <p 
-            
-            className="mt-1 text-gray-500">{addedDate}</p>
+            <p className="mt-1 text-gray-500">{addedDate}</p>
           </div>
 
-          {/* User Email */}
           <div>
             <label className="block text-gray-700 font-medium">User Email</label>
-            <p 
-            id="email"
-            name="email"
-            value={formData.email}
-            className="mt-1 text-gray-500">{user?.email}</p>
-            {/* <input
-              type="email"
-              id="email"
-              name="email"
-              defaultValue={user?.email}
-              value={formData.email}
-              onChange={handleChange}
-              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
-              placeholder="Enter image URL"
-              required
-            /> */}
+            <p className="mt-1 text-gray-500">{user?.email}</p>
           </div>
         </div>
 
         <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           type="submit"
-          // className="w-full bg-yellow-400 text-white py-2 px-4 mt-6 rounded-md hover:bg-orange-400 focus:outline-none focus:ring focus:ring-indigo-300"
-          className="bg-yellow-400 text-white text-sm font-medium py-2 w-full mt-4 px-4 rounded-lg shadow hover:bg-yellow-500 transition-all duration-300"
+          className="bg-blue-500 text-white text-sm font-medium py-2 w-full mt-6 px-4 rounded-lg shadow hover:bg-blue-600 transition-all duration-300"
         >
           Add Service
         </motion.button>

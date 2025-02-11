@@ -26,13 +26,13 @@ const Statistics = () => {
 
   return (
     <div className="flex flex-col md:flex-row justify-center items-center gap-8 p-6">
-      <motion.h2 
+      {/* <motion.h2 
       animate={{x:5}}
       transition={{duration:2, delay: 1, ease: easeOut, repeat: Infinity}}
       className='text-3xl font-bold text-yellow-600'> <motion.span
       animate={{color: ['#fac440','#faa540','#cafa40','#fa8140']}}
         transition={{duration: 1.5, repeat: Infinity}}
-      >Statistics</motion.span> of Users </motion.h2>
+      >Statistics</motion.span> of Users </motion.h2> */}
       {Object.entries(data).map(([key, value]) => (
         <Card className="w-60 p-4 shadow-lg" key={key}>
           <Typography variant="h3" className="text-center font-bold text-blue-500">

@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png"
 
 const Footer = () => {
   return (
-    <footer className="bg-[#111827] text-[#FFFFFF] py-8">
+    <footer className="bg-dark text-whiteContr py-8">
       <div className="container mx-auto px-6 md:px-12">
         {/* Website Logo/Name */}
         <div className="flex flex-col md:flex-row justify-between mb-6">
@@ -24,10 +24,10 @@ const Footer = () => {
           <div className="flex flex-col">
             <h4 className="font-semibold mb-2">Useful Links</h4>
             <ul>
-              <li><a href="/about" className="text-#FFFFFF hover:text-[#FACC15]">About Us</a></li>
-              <li><a href="/contact" className="text-#FFFFFF hover:text-[#FACC15]">Contact</a></li>
-              <li><a href="/privacy" className="text-#FFFFFF hover:text-[#FACC15]">Privacy Policy</a></li>
-              <li><a href="/terms" className="text-#FFFFFF hover:text-[#FACC15]">Terms of Service</a></li>
+              <li><a href="/about" className="text-#FFFFFF hover:text-secondary">About Us</a></li>
+              <li><a href="/contact" className="text-#FFFFFF hover:text-secondary">Contact</a></li>
+              <li><a href="/privacy" className="text-#FFFFFF hover:text-secondary">Privacy Policy</a></li>
+              <li><a href="/terms" className="text-#FFFFFF hover:text-secondary">Terms of Service</a></li>
             </ul>
           </div>
         </div>

@@ -46,8 +46,11 @@ const Services = () => {
     return (
         <div>
             {/* <h1 className='py-5 text-4xl font-bold text-center'>All Services</h1> */}
-            <div className='w-11/12 mx-auto bg-yellow-400 py-5 p-3 flex flex-col lg:flex-row justify-between items-center rounded-lg mt-10 gap-5'>
-                <h1 className='py-5 text-2xl w-full font-bold lg:text-left text-center'>All Services</h1>
+            {/* <div className='w-11/12 mx-auto bg-secondary py-5 p-3 flex flex-col lg:flex-row justify-between items-center rounded-lg mt-10 gap-5'> */}
+            <div className='w-11/12 mx-auto bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 py-5 p-3 flex flex-col lg:flex-row justify-between items-center rounded-lg mt-10 gap-5'>
+                {/* <h1 className='py-5 text-2xl w-full font-bold lg:text-left text-center'>All Services</h1> */}
+                {/* <h1 className='py-5 text-3xl md:text-4xl w-full font-bold lg:text-left text-center'>All Services</h1> */}
+                <h1 className="text-xl md:text-2xl lg:text-3xl w-full text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-600">All Services</h1>
                 <div className='flex justify-evenly items-center gap-3 w-full'>
                     <div className='relative flex items-center justify-start w-full'>
                         <BiSearch className='absolute left-2 top-1/3 text-xl font-semibold'></BiSearch>

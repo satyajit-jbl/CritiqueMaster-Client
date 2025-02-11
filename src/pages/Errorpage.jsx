@@ -1,60 +1,58 @@
+// import React from "react";
+
+// const ErrorPage = () => {
+//   const handleButtonClick = () => {
+//     window.location.href = "/";
+//   };
+
+//   return (
+//     <div className="flex items-center justify-center h-screen bg-blue-50">
+//       <div className="text-center bg-white p-10 rounded-2xl shadow-lg max-w-lg">
+//         <h1 className="text-5xl font-bold text-blue-600 mb-4">Oops!</h1>
+//         <p className="text-2xl text-gray-700 mb-2">(Error 404)</p>
+//         <p className="text-lg text-gray-500 mb-6">
+//           The page you are looking for does not exist or has been moved.
+//         </p>
+//         <button
+//           onClick={handleButtonClick}
+//           className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all duration-300 ease-in-out"
+//         >
+//           Go to Homepage
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ErrorPage;
+
 import React from "react";
+// import { Player } from "@lottiefiles/react-lottie-player";
+import errorAnimation from "../assets/error.json"; // Replace with your Lottie file path
+import Lottie from "lottie-react";
 
 const ErrorPage = () => {
   const handleButtonClick = () => {
-    // Redirect to the home page or another route
     window.location.href = "/";
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.errorBox}>
-        <h1 style={styles.title}>Oops! <span className="text-xl text-red-600">(Error 404)</span></h1>
-        <p style={styles.message}>
+    <div className="flex items-center justify-center h-screen bg-blue-50">
+      <div className="text-center bg-white p-10 rounded-2xl shadow-lg max-w-lg">
+        <Lottie animationData={errorAnimation}></Lottie>
+        <h1 className="text-4xl font-bold text-blue-600 mb-2">Oops! Page Not Found</h1>
+        <p className="text-lg text-gray-600 mb-6">
           The page you are looking for does not exist or has been moved.
         </p>
-        <button style={styles.button} onClick={handleButtonClick}>
+        <button
+          onClick={handleButtonClick}
+          className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all duration-300 ease-in-out"
+        >
           Go to Homepage
         </button>
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    backgroundColor: "#f8f9fa",
-  },
-  errorBox: {
-    textAlign: "center",
-    backgroundColor: "#ffffff",
-    padding: "40px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-  },
-  title: {
-    fontSize: "48px",
-    color: "#343a40",
-    margin: "0 0 20px",
-  },
-  message: {
-    fontSize: "18px",
-    color: "#6c757d",
-    margin: "0 0 30px",
-  },
-  button: {
-    padding: "10px 20px",
-    fontSize: "16px",
-    color: "#ffffff",
-    backgroundColor: "#007bff",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
 };
 
 export default ErrorPage;

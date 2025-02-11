@@ -3,10 +3,10 @@ import logo from "../../assets/logo.png"
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-whiteContr py-8">
+    <footer className="bg-dark text-whiteContr py-1">
       <div className="container mx-auto px-6 md:px-12">
         {/* Website Logo/Name */}
-        <div className="flex flex-col md:flex-row justify-between mb-6">
+        <div className="flex flex-col md:flex-row justify-between mb-2">
           <div className='flex items-center'>
           <img src={logo} alt="" />
           <div className="text-3xl font-semibold">CritiqueMaster</div>
@@ -15,7 +15,7 @@ const Footer = () => {
         </div>
 
         {/* Description */}
-        <div className="mb-6 text-md">
+        <div className="mb-2 text-md">
           <p>ServiceReview is your go-to platform for sharing and reading honest reviews of various services. We aim to help users make informed decisions based on real experiences from others.</p>
         </div>
 
@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="flex flex-wrap md:flex-nowrap justify-between mb-6">
           <div className="flex flex-col">
             <h4 className="font-semibold mb-2">Useful Links</h4>
-            <ul>
+            <ul className='flex gap-10'>
               <li><a href="/about" className="text-#FFFFFF hover:text-secondary">About Us</a></li>
               <li><a href="/contact" className="text-#FFFFFF hover:text-secondary">Contact</a></li>
               <li><a href="/privacy" className="text-#FFFFFF hover:text-secondary">Privacy Policy</a></li>
@@ -34,7 +34,7 @@ const Footer = () => {
 
         {/* Copyright Information */}
         <div className="border-t border-gray-700 pt-4 text-center text-sm">
-          <p>© 2024 ServiceReview. All rights reserved.</p>
+          <p>© 2025 ServiceReview. All rights reserved.</p>
         </div>
       </div>
     </footer>

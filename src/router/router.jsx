@@ -14,6 +14,10 @@ import UpdateService from "../pages/Services/UpdateService";
 import ServiceDetails from "../pages/Services/ServiceDetails";
 import PrivateRoute from "./PrivateRoute";
 import Reviews from "../pages/Services/Reviews";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import TermsOfService from "../pages/TermsOfService";
 
 
   const router = createBrowserRouter([
@@ -62,9 +66,26 @@ import Reviews from "../pages/Services/Reviews";
         
       ]
     },
+    
     {
       path: '*',
       element: <ErrorPage></ErrorPage>
+    },
+    {
+      path: '/about',
+      element: <About></About>
+    },
+    {
+      path: '/contact',
+      element: <Contact></Contact>
+    },
+    {
+      path: '/privacy',
+      element: <PrivacyPolicy></PrivacyPolicy>
+    },
+    {
+      path: '/terms',
+      element: <TermsOfService></TermsOfService>
     }
   ]);
 

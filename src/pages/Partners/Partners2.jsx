@@ -8,19 +8,19 @@ const partners = [
   {
     name: "Bright Minds Alliance",
     logo: "https://i.ibb.co.com/9mXgpqz/istockphoto-1335941248-612x612.jpg",
-    icon: "https://i.ibb.co.com/9bbhpHK/Partner-2.png", // New field for icon
+    icon: logoCompany1, // New field for icon
     description: "A high-speed service provider dedicated to IT support, technical maintenance, and software development, ensuring businesses stay connected and operational."
   },
   {
     name: "Duo Ventures",
     logo: "https://i.ibb.co.com/j6RLnSJ/pexels-olly-762020.jpg",
-    icon: "https://i.ibb.co.com/LPwVgrF/Partner-1.png", // New field for icon
+    icon: logoCompany2, // New field for icon
     description: "Specializes in healthcare and eldercare services, providing compassionate and reliable care through certified professionals."
   },
   {
     name: "Artistry Alliance",
     logo: "https://i.ibb.co.com/qYLccfrq/zfa-service-partner-managmenr-fullhd-21.jpg",
-    icon: "https://i.ibb.co.com/5FsKbD7/Partner-3.png", // New field for icon
+    icon: logoCompany3, // New field for icon
     description: "A comprehensive service platform specializing in professional home repair, cleaning, and maintenance solutions with a focus on eco-friendly practices."
   },
   // Add more partners here as needed
@@ -29,20 +29,22 @@ const partners = [
 const Partners2 = () => {
   return (
     <motion.section
-      className="bg-yellow-50 py-16 px-4"
+      className="bg-yellow-50 py-8 px-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       <div className="max-w-screen-xl mx-auto text-center">
         <motion.h2
-          className="text-4xl font-semibold mb-8 text-yellow-600"
+          // className="text-4xl font-semibold mb-8 text-yellow-600"
+          className="text-xl md:text-2xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-600 mb-8"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
           Meet Our Partners
         </motion.h2>
+        {/* <p>Our Trusted Collaborators</p> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {partners.map((partner, index) => (
             <motion.div
@@ -50,7 +52,7 @@ const Partners2 = () => {
               className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 hover:bg-yellow-100"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: index * 2 }}
+              transition={{ duration: 0.9, delay: index * 1.5 }}
             >
               <img
                 src={partner.logo}

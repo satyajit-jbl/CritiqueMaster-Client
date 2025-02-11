@@ -64,11 +64,11 @@ const ServiceDetails = () => {
     const review = form.review.value;
     const serviceId = _id;
     const email = user?.email;
-    const userName = user?.displayName;
+    const UserName = user?.displayName;
     const UserPhoto = user?.photoURL;
     const addedDate = new Date().toLocaleDateString();
 
-    const reviewData = { serviceTitle, companyName, review, serviceId, email, userName, UserPhoto, rate: rating, addedDate };
+    const reviewData = { serviceTitle, companyName, review, serviceId, email, UserName, UserPhoto, rate: rating, addedDate };
     addReviewMutation.mutate(reviewData);
   };
 

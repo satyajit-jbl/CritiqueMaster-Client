@@ -9,7 +9,7 @@ const AddService = () => {
   const { user } = useContext(authContext);
   const navigate = useNavigate();
   const email = user?.email;
-  const userName = user?.displayName;
+  const UserName = user?.displayName;
   const ProfileImage = user?.photoURL;
 
   const [formData, setFormData] = useState({
@@ -32,7 +32,7 @@ const AddService = () => {
       ...formData,
       addedDate,
       email,
-      userName,
+      UserName,
       ProfileImage,
       [name]: name === "price" ? parseInt(value) || 0 : value,
     });

@@ -34,7 +34,7 @@ const ServiceCard = ({ service }) => {
           <h2 className="text-lg font-bold text-gray-800 truncate">{serviceTitle}</h2>
           <h3 className="text-sm font-light text-gray-600">{companyName}</h3>
           <p className="text-xs text-gray-500 mt-1">Type: {category}</p>
-          <p className="text-lg font-semibold text-green-600 mt-1">Price: ${price}</p>
+          <p className="text-lg font-semibold text-secondary mt-1">Price: ${price}</p>
           <p className="text-sm text-gray-700 mt-2">
             Details: {description.length > 40 ? `${description.substring(0, 40)}...` : description}
           </p>

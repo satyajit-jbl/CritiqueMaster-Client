@@ -165,11 +165,11 @@ const ReviewCard = ({ reviewData }) => {
               <button
                 type="submit"
                 className="relative px-6 py-3 rounded-lg text-white font-semibold 
-             bg-gradient-to-r from-yellow-400 to-orange-500 
-             hover:from-orange-500 hover:to-yellow-400 
+             bg-gradient-to-r from-blue-400 to-blue-500 
+             hover:from-blue-500 hover:to-yellow-400 
              transition-all duration-300 ease-in-out 
-             shadow-lg hover:shadow-yellow-500/50 
-             border-2 border-transparent hover:border-yellow-400 
+             shadow-lg hover:shadow-blue-500/50 
+             border-2 border-transparent hover:border-blue-400 
              before:absolute before:inset-0 before:animate-glow-border"
               >
                 Update Review

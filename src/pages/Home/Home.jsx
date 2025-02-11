@@ -16,6 +16,10 @@ const Home = () => {
     return (
         <div>
             <AutoSlidingImageSlider></AutoSlidingImageSlider>
+            <div className='text-center my-10'>
+                <h1 className='text-4xl font-bold text-primary'>Our Featured Services</h1>
+                <p className='text-lg text-secondary mt-2'>Tailored Solutions for Your Needs</p>
+            </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 m-5 place-items-center'>
                 {/* <h1>Our Featured Services</h1> */}
@@ -27,7 +31,7 @@ const Home = () => {
             {/* <Partners></Partners> */}
             <Partners2></Partners2>
             <ServicesSection></ServicesSection>
-            
+
 
             <AppSection></AppSection>
 

@@ -51,7 +51,7 @@ const Services = () => {
                             onKeyUp={(e) => setSearch(e.target.value)}
                             className='input w-full max-w-2xl pl-7'
                             type="text"
-                            placeholder='Search Services by Title'
+                            placeholder='Search by Title'
                         />
                     </div>
 

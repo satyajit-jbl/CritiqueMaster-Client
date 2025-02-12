@@ -37,7 +37,7 @@ function ServicesSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <FaPhoneAlt className="h-8 w-8" />
-            <span className="text-xl font-semibold">Call us toll free: +91 9409 957 957</span>
+            <span className="text-xl font-semibold">Call us toll free: +88 9409 957 957</span>
           </motion.div>
         </div>
       </div>

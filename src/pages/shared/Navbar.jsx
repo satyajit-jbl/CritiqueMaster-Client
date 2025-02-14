@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     // <nav className=" shadow-md sticky top-0 z-50 bg-slate-200 backdrop-blur-lg ">
-    <nav className="relative h-16 shadow-md sticky top-0 z-50 bg-[#1E3A8A] backdrop-blur-lg ">
+    <nav className="h-16 shadow-md sticky top-0 z-50 bg-[#1E3A8A] backdrop-blur-lg ">
       <div className="container mx-auto px-2 sm:px-6 lg:px-4 ">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}

@@ -67,7 +67,7 @@ const ReviewCard = ({ reviewData }) => {
     <section className="w-full h-full">
       <div className="w-full h-full card bg-base-100 shadow-xl">
         <div className="card-body">
-          <img className="h-28 w-28 rounded-xl" src={UserPhoto} alt="User" />
+          <img className="h-28 w-28 rounded-full" src={UserPhoto} alt="User" />
           <h2 className="text-xl">Name: {UserName}</h2>
           {/* <h2 className="card-title">{serviceTitle}</h2> */}
           <h2 className="text-xl font-semibold text-gray-800 mb-4 relative inline-block 

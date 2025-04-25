@@ -60,7 +60,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-gray-700 pt-4 text-center text-sm">
-          <p>© 2025 ServiceReview. All rights reserved.</p>
+          <p>© 2025 ServiceReview. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

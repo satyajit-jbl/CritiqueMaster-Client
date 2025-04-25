@@ -75,18 +75,18 @@ const Navbar = () => {
                     className="w-12 h-12 rounded-full border"
                   /> */}
 
-<div className="relative group flex items-center">
-  <img
-    referrerPolicy="no-referrer"
-    src={user?.photoURL || "https://via.placeholder.com/40"}
-    alt="User Avatar"
-    className="w-12 h-12 rounded-full border"
-  />
-  {/* Tooltip shown below with fade + slide-up animation */}
-  <span className="absolute left-1/2 top-full mt-2 transform -translate-x-1/2 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out bg-black text-white text-xs font-medium px-3 py-1 rounded shadow-lg pointer-events-none z-50">
-    {user?.displayName || "User"}
-  </span>
-</div>
+                  <div className="relative group flex items-center">
+                    <img
+                      referrerPolicy="no-referrer"
+                      src={user?.photoURL || "https://via.placeholder.com/40"}
+                      alt="User Avatar"
+                      className="w-12 h-12 rounded-full border"
+                    />
+                    {/* Tooltip shown below with fade + slide-up animation */}
+                    <span className="absolute left-1/2 top-full mt-2 transform -translate-x-1/2 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out bg-black text-white text-xs font-medium px-3 py-1 rounded shadow-lg pointer-events-none z-50">
+                      {user?.displayName || "User"}
+                    </span>
+                  </div>
                   <button
                     onClick={handleLogout}
                     className="text-whiteContr font-bold hover:text-blue-600">

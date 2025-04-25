@@ -5,32 +5,32 @@ import logo from "../../assets/logo.png"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {user, logOut} =useContext(authContext);
+  const { user, logOut } = useContext(authContext);
   const menuRef = useRef(null); // ref for dropdown menu 
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleLogout = ()=>{
+  const handleLogout = () => {
     logOut();
     setIsMenuOpen(false);
     // .then(()=>alert('successfully logout'))
   }
 
-  useEffect(()=>{
-    const handleClickOutside = (event) =>{
-      if(menuRef.current && !menuRef.current.contains(event.target)){
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
       }
     };
-    if(isMenuOpen){
+    if (isMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
-    return()=>{
+    return () => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
-  },[isMenuOpen])
+  }, [isMenuOpen])
 
   return (
     // <nav className=" shadow-md sticky top-0 z-50 bg-slate-200 backdrop-blur-lg ">
@@ -41,7 +41,7 @@ const Navbar = () => {
           <div className=" flex flex-shrink-0 items-center">
             <Link to="/"><img src={logo} alt="" /></Link>
             <Link to="/" className="text-xl font-bold text-whiteContr hover:text-blue-600">
-            CritiqueMaster
+              CritiqueMaster
             </Link>
           </div>
 
@@ -68,12 +68,25 @@ const Navbar = () => {
                   My Services
                 </Link>
                 <div className="flex items-center space-x-4">
-                  <img
+                  {/* <img
                     referrerPolicy='no-referrer'
                     src={user?.photoURL || "https://via.placeholder.com/40"}
                     alt="User Avatar"
                     className="w-12 h-12 rounded-full border"
-                  />
+                  /> */}
+
+<div className="relative group flex items-center">
+  <img
+    referrerPolicy="no-referrer"
+    src={user?.photoURL || "https://via.placeholder.com/40"}
+    alt="User Avatar"
+    className="w-12 h-12 rounded-full border"
+  />
+  {/* Tooltip shown below with fade + slide-up animation */}
+  <span className="absolute left-1/2 top-full mt-2 transform -translate-x-1/2 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out bg-black text-white text-xs font-medium px-3 py-1 rounded shadow-lg pointer-events-none z-50">
+    {user?.displayName || "User"}
+  </span>
+</div>
                   <button
                     onClick={handleLogout}
                     className="text-whiteContr font-bold hover:text-blue-600">
@@ -138,26 +151,26 @@ const Navbar = () => {
               <Link to="/" className="block font-bold hover:text-blue-600" style={{ color: '#FF9800' }}>
                 Home
               </Link>
-              <Link to="/services" onClick={()=>setIsMenuOpen(false)} className="block text-gray-600 hover:text-blue-600">
+              <Link to="/services" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 hover:text-blue-600">
                 Services
               </Link>
               {user ? (
                 <>
                   <Link
                     to="/add-service"
-                    onClick={()=>setIsMenuOpen(false)}
+                    onClick={() => setIsMenuOpen(false)}
                     className="block text-gray-600 hover:text-blue-600">
                     Add Service
                   </Link>
                   <Link
                     to="/reviews"
-                    onClick={()=>setIsMenuOpen(false)}
+                    onClick={() => setIsMenuOpen(false)}
                     className="block text-gray-600 hover:text-blue-600">
                     My Reviews
                   </Link>
                   <Link
                     to="/my-services"
-                    onClick={()=>setIsMenuOpen(false)}
+                    onClick={() => setIsMenuOpen(false)}
                     className="block text-gray-600 hover:text-blue-600">
                     My Services
                   </Link>
@@ -170,7 +183,7 @@ const Navbar = () => {
                     <button
                       // onClick={onLogout}
                       onClick={handleLogout}
-                      
+
                       className="text-gray-600 hover:text-blue-600">
                       Logout
                     </button>
@@ -178,7 +191,7 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Link to="/login" onClick={()=>setIsMenuOpen(false)} className="block text-gray-600 hover:text-blue-600">
+                  <Link to="/login" onClick={() => setIsMenuOpen(false)} className="block text-gray-600 hover:text-blue-600">
                     Login
                   </Link>
                   <Link

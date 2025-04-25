@@ -46,6 +46,7 @@ const Navbar = () => {
           </div>
 
           {/* Links */}
+          
           {/* hide menu from md, so lg:flex */}
           <div className="hidden lg:flex space-x-6 items-center">
             <Link to="/" className="text-whiteContr font-bold hover:text-blue-600">
